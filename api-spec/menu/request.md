@@ -1,0 +1,506 @@
+# 기안 - 결재 상태 별 문서 개수
+기안한 결재 문서 개수를 결재 상태별로 조회합니다.
+## URL
+* /api/sign/request/approveState/docCount/dataModify
+* GET
+* application/x-www-form-urlencoded;charset=UTF-8
+## Request
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|*approveState|1, 2, 3|Map|결재 상태<br/>1 : 결재 중<br/>2 : 승인<br/>3 : 반려|
+|*reqOrgUid|u01|String|기안자 ID|
+|createDateFrom|2021/04/26|String|기안일 기준 검색 시작일|
+|createDateTo|2021/04/27|String|기안일 기준 검색 종료일|
+```json
+{
+    "approveState" : [1, 2, 3],
+    "reqOrgUid" : "u1",
+    "createDateFrom" : "2021/01/01",
+    "createDateTo" : "2021/01/01"
+ }
+```
+## Response
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|clientMessage|처리되었습니다.|String|클라이언트용 결과 메시지|
+|code|200|int|결과 코드|
+|data||Map|결과 데이터|
+|docCount||List|결재 상태 별 문서 개수 목록|
+|approveState|2|String|결재 상태<br/>1 : 결재 중<br/>2 : 승인<br/>3 : 반려|
+|count|1|int|조회한 결재 문서 개수|
+|messageCode|200|int|결과 메시지 코드|
+|serverMessage|success|String|서버용 결과 메시지|
+```json
+{
+    "clientMessage": "처리되었습니다.",
+    "code": 200,
+    "data": {
+        "docCount": [
+            {
+                "approveState": 1,
+                "count": 1
+            },
+            {
+                "approveState": 2,
+                "count": 2
+            },
+            {
+                "approveState": 3,
+                "count": 1
+            }
+        ]
+    },
+    "messageCode": 200,
+    "serverMessage": "success"
+}
+```
+
+
+# 기안 - 실행 상태 별 문서 개수
+기안한 결재 문서 수를 실행 상태별로 조회합니다.
+## URL
+* /api/sign/request/execState/docCount/dataModify
+* GET
+* application/x-www-form-urlencoded;charset=UTF-8
+## Request
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|*execState|1, 2, 3|Map|실행 상태<br/>1 : 실행 전<br/>2 : 실행 성공<br/>3 : 실행 실패|
+|*reqOrgUid|u01|String|기안자 ID|
+|createDateFrom|2021/04/26|String|기안일 기준 검색 시작일|
+|createDateTo|2021/04/27|String|기안일 기준 검색 종료일|
+```json
+{
+    "execState" : [1, 2, 3],
+    "reqOrgUid" : "au1",
+    "createDateFrom" : "2020/01/01",
+    "createDateTo" : "2020/12/31"
+ }
+```
+## Response
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|clientMessage|처리되었습니다.|String|클라이언트용 결과 메시지|
+|code|200|int|결과 코드|
+|data||Map|결과 데이터|
+|docCount||List|실행 상태 별 문서 개수 목록|
+|execState|1|String|실행 상태<br/>1 : 실행 성공<br/>2 : 실행 실패<br/>3 : 실행 미완료|
+|count|1|int|조회한 결재 문서 개수|
+|messageCode|200|int|결과 메시지 코드|
+|serverMessage|success|String|서버용 결과 메시지|
+```json
+{
+    "clientMessage": "처리되었습니다.",
+    "code": 200,
+    "data": {
+        "docCount": [
+            {
+                "execState": 1,
+                "count": 1
+            },
+            {
+                "execState": 2,
+                "count": 1
+            },
+            {
+                "execState": 3,
+                "count": 2
+            }
+        ]
+    },
+    "messageCode": 200,
+    "serverMessage": "success"
+}
+```
+
+
+# 기안 - 결재 대기
+현재 사용자가 결재자로 있는 DB 데이터 변경 요청서 중 결재 순서가 도래한 문서 목록 조회
+## URL
+* /api/sign/request/standby/doc/dataModify
+* GET
+* application/x-www-form-urlencoded;charset=UTF-8
+## Request
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|*orgUid|u01|String|사용자 ID|
+```
+?orgUid=u01
+```
+## Response
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|clientMessage|처리되었습니다.|String|클라이언트용 결과 메시지|
+|code|200|int|결과 코드|
+|data||Map|결과 데이터|
+|docList||Map|조회한 결재 문서 목록|
+|docId|2021000004|String|결재 문서 번호|
+|docTitle|\[변경\] DB데이터변경|String|결재 문서 제목|
+|createDate|22021/04/27 17:39:31|String|기안일|
+|aprvLimit|2021/05/04|String|결재 기한|
+|approverName|결재자01|String|현재 결재자 이름|
+|agentApproverName||String|현재 결재자의 대결자 이름|
+|groundsDocId|근거-001|String|근거 문서 번호|
+|docCount|1|int|조회한 결재 문서 수|
+|messageCode|200|int|결과 메시지 코드|
+|serverMessage|success|String|서버용 결과 메시지|
+```json
+{
+    "clientMessage": "처리되었습니다.",
+    "code": 200,
+    "data": {
+        "docList": [
+            {
+                "docId": "2021000004",
+                "docTitle": "[변경] DB데이터변경",
+                "createDate": "2021/04/27 17:39:31",
+                "aprvLimit": "2021/05/04",
+                "approverName": "결재자01",
+                "agentApproverName": "",
+                "groundsDocId": "근거-001"
+            }
+        ],
+        "docCount": 1
+    },
+    "messageCode": 200,
+    "serverMessage": "success"
+}
+```
+
+
+# 기안 - 결재 승인
+현재 로그인한 사용자가 승인 요청한 DB 데이터 변경 요청서 중 최종 승인 된 문서 목록을 조회합니다.
+## URL
+* /api/sign/request/approve/doc/dataModify
+* GET
+* application/x-www-form-urlencoded;charset=UTF-8
+## Request
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|*orgUid|u01|String|사용자 ID|
+```
+?orgUid=u01
+```
+## Response
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|clientMessage|처리되었습니다.|String|클라이언트용 결과 메시지|
+|code|200|int|결과 코드|
+|data||Map|결과 데이터|
+|docList||Map|조회한 결재 문서 목록|
+|docId|2021000001|String|결재 문서 번호|
+|docTitle|\[변경\] DB데이터변경|String|결재 문서 제목|
+|createDate|2021/04/27 15:35:15|String|기안일|
+|endDate|2021/04/27 17:16:05|String|결재 완료일|
+|groundsDocId|근거-001|String|근거 문서 번호|
+|docCount|2|int|조회한 결재 문서 수|
+|messageCode|200|int|결과 메시지 코드|
+|serverMessage|success|String|서버용 결과 메시지|
+```json
+{
+    "clientMessage": "처리되었습니다.",
+    "code": 200,
+    "data": {
+        "docList": [
+            {
+                "docId": "2021000001",
+                "docTitle": "[변경] DB데이터변경",
+                "createDate": "2021/04/27 15:35:15",
+                "endDate": "2021/04/27 17:16:05",
+                "groundsDocId": "근거-001"
+            },
+            {
+                "docId": "2021000003",
+                "docTitle": "[변경] DB데이터변경",
+                "createDate": "2021/04/27 17:30:48",
+                "endDate": "2021/04/27 17:31:17",
+                "groundsDocId": "근거-001"
+            }
+        ],
+        "docCount": 2
+    },
+    "messageCode": 200,
+    "serverMessage": "success"
+}
+```
+
+
+# 기안 - 결재 반려
+현재 로그인한 사용자가 승인 요청한 DB 데이터 변경 요청서 중 반려 된 문서 목록을 조회합니다.
+## URL
+* /api/sign/request/reject/doc/dataModify
+* GET
+* application/x-www-form-urlencoded;charset=UTF-8
+## Request
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|*orgUid|u01|String|사용자 ID|
+```
+?orgUid=u01
+```
+## Response
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|clientMessage|처리되었습니다.|String|클라이언트용 결과 메시지|
+|code|200|int|결과 코드|
+|data||Map|결과 데이터|
+|docList||Map|조회한 결재 문서 목록|
+|docId|2021000002|String|결재 문서 번호|
+|docTitle|\[변경\] DB데이터변경|String|결재 문서 제목|
+|createDate|2021/04/27 17:19:56|String|기안일|
+|endDate|2021/04/27 17:20:10|String|결재 완료일|
+|rejectApproverName|결재자01|String|반려한 결재자 이름|
+|groundsDocId|근거-001|String|근거 문서 번호|
+|docCount|1|int|조회한 결재 문서 수|
+|messageCode|200|int|결과 메시지 코드|
+|serverMessage|success|String|서버용 결과 메시지|
+```json
+{
+    "clientMessage": "처리되었습니다.",
+    "code": 200,
+    "data": {
+        "docList": [
+            {
+                "docId": "2021000002",
+                "docTitle": "[변경] DB데이터변경",
+                "createDate": "2021/04/27 17:19:56",
+                "endDate": "2021/04/27 17:20:10",
+                "rejectApproverName": "결재자01",
+                "groundsDocId": "근거-001"
+            }
+        ],
+        "docCount": 1
+    },
+    "messageCode": 200,
+    "serverMessage": "success"
+}
+```
+
+
+# 기안 - 실행 성공
+현재 로그인한 사용자가 승인 요청한 DB 데이터 변경 요청서 중 실행 성공한 문서 목록을 조회합니다.
+## URL
+* /api/sign/request/exec/success/doc/dataModify
+* GET
+* application/x-www-form-urlencoded;charset=UTF-8
+## Request
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|*orgUid|u01|String|사용자 ID|
+```
+?orgUid=u01
+```
+## Response
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|clientMessage|처리되었습니다.|String|클라이언트용 결과 메시지|
+|code|200|int|결과 코드|
+|data||Map|결과 데이터|
+|docList||Map|조회한 결재 문서 목록|
+|docId|2021000001|String|결재 문서 번호|
+|docTitle|\[변경\] DB데이터변경|String|결재 문서 제목|
+|createDate|2021/04/27 15:35:15|String|기안일|
+|execName|dba01|String|실행자 이름|
+|execDate|2021/04/27 17:16:05|String|실행일|
+|groundsDocId|근거-001|String|근거 문서 번호|
+|docCount|1|int|조회한 결재 문서 수|
+|messageCode|200|int|결과 메시지 코드|
+|serverMessage|success|String|서버용 결과 메시지|
+```json
+{
+    "clientMessage": "처리되었습니다.",
+    "code": 200,
+    "data": {
+        "docList": [
+            {
+                "docId": "2021000001",
+                "docTitle": "[변경] DB데이터변경",
+                "createDate": "2021/04/27 15:35:15",
+                "execName": "dba01",
+                "execDate": "2021/04/27 17:16:05",
+                "groundsDocId": "근거-001"
+            }
+        ],
+        "docCount": 1
+    },
+    "messageCode": 200,
+    "serverMessage": "success"
+}
+```
+
+
+# 기안 - 실행 실패
+현재 로그인한 사용자가 승인 요청한 DB 데이터 변경 요청서 중 실행 실패한 문서 목록을 조회합니다.
+## URL
+* /api/sign/request/exec/fail/doc/dataModify
+* GET
+* application/x-www-form-urlencoded;charset=UTF-8
+## Request
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|*orgUid|u01|String|사용자 ID|
+```
+?orgUid=u01
+```
+## Response
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|clientMessage|처리되었습니다.|String|클라이언트용 결과 메시지|
+|code|200|int|결과 코드|
+|data||Map|결과 데이터|
+|docList||Map|조회한 결재 문서 목록|
+|docId|2021000003|String|결재 문서 번호|
+|docTitle|\[변경\] DB데이터변경|String|결재 문서 제목|
+|createDate|2021/04/27 17:30:48|String|기안일|
+|execName|dba01|String|실행자 이름|
+|execDate|2021/04/27 17:31:16|String|실행일|
+|groundsDocId|근거-001|String|근거 문서 번호|
+|docCount|1|int|조회한 결재 문서 수|
+|messageCode|200|int|결과 메시지 코드|
+|serverMessage|success|String|서버용 결과 메시지|
+```json
+{
+    "clientMessage": "처리되었습니다.",
+    "code": 200,
+    "data": {
+        "docList": [
+            {
+                "docId": "2021000003",
+                "docTitle": "[변경] DB데이터변경",
+                "createDate": "2021/04/27 17:30:48",
+                "execName": "dba01",
+                "execDate": "2021/04/27 17:31:16",
+                "groundsDocId": "근거-001"
+            }
+        ],
+        "docCount": 1
+    },
+    "messageCode": 200,
+    "serverMessage": "success"
+}
+```
+
+
+# 기안 - 실행 미완료
+현재 로그인한 사용자가 승인 요청한 DB 데이터 변경 요청서 중 실행이 끝나지 않은 문서 목록을 조회합니다.
+## URL
+* /api/sign/request/exec/unfinished/doc/dataModify
+* GET
+* application/x-www-form-urlencoded;charset=UTF-8
+## Request
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|*orgUid|user01|String|사용자 ID|
+```
+?orgUid=user01
+```
+## Response
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|clientMessage|처리되었습니다.|String|클라이언트용 결과 메시지|
+|code|200|int|결과 코드|
+|data||Map|결과 데이터|
+|docList||Map|조회한 결재 문서 목록|
+|docId|2021000002|String|결재 문서 번호|
+|docTitle|\[변경\] DB데이터변경|String|결재 문서 제목|
+|requestName||String|기안자 이름|
+|createDate|2021/04/27 17:19:56|String|기안일|
+|aprvLimit|2021/05/04|String|결재 기한|
+|groundsDocId|근거-001|String|근거 문서 번호|
+|docCount|2|int|조회한 결재 문서 수|
+|messageCode|200|int|결과 메시지 코드|
+|serverMessage|success|String|서버용 결과 메시지|
+```json
+{
+    "clientMessage": "처리되었습니다.",
+    "code": 200,
+    "data": {
+        "docList": [
+            {
+                "docId": "2021000002",
+                "docTitle": "[변경] DB데이터변경",
+                "requestName": null,
+                "createDate": "2021/04/27 17:19:56",
+                "aprvLimit": "2021/05/04",
+                "groundsDocId": "근거-001"
+            },
+            {
+                "docId": "2021000004",
+                "docTitle": "[변경] DB데이터변경",
+                "requestName": null,
+                "createDate": "2021/04/27 17:39:31",
+                "aprvLimit": "2021/05/04",
+                "groundsDocId": "근거-001"
+            }
+        ],
+        "docCount": 2
+    },
+    "messageCode": 200,
+    "serverMessage": "success"
+}
+```
+
+# 기안 - 전체
+현재 로그인한 사용자가 기안한 DB 데이터 변경 요청서 목록을 조회합니다.
+## URL
+* /api/sign/request/doc/dataModify
+* GET
+* application/x-www-form-urlencoded;charset=UTF-8
+## Request
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|*orgUid|u01|String|로그인 ID|
+```
+?orgUid=u01
+```
+## Response
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|clientMessage|처리되었습니다.|String|클라이언트용 결과 메시지|
+|code|200|int|결과 코드|
+|data||Map|결과 데이터|
+|docList||Map|조회한 결재 문서 목록|
+|docId|2021000001|String|결재 문서 번호|
+|docTitle|\[변경\] DB데이터변경|String|제목|
+|createDate|2021/04/27 15:35:15|String|기안일|
+|endDate|2021/04/27 17:16:05|String|결재 완료일|
+|aprvLimit|2021/05/04|String|결재 기한|
+|agentApproverName||String|대결자 이름|
+|rejectApproverName||String|반려 결재자 이름|
+|execName|dba01|String|실행자 이름|
+|execDate|2021/04/27 17:16:05|String|실행일|
+|groundsDocId|근거-001|String|근거 문서 번호|
+|approveState|2|String|결재 상태<br/>1: 결재 중<br/>2 : 승인<br/>3 : 반려<br/>4 : 후결|
+|execState|1|String|실행 상태<br/>1 : 실행 성공<br/>2 : 실행 실패<br/>3 : 실행 미완료|
+|requestName||String|기안자 이름|
+|docCount|1|int|조회한 결재 문서 수|
+|messageCode|200|int|결과 메시지 코드|
+|serverMessage|success|String|서버용 결과 메시지|
+```json
+{
+    "clientMessage": "처리되었습니다.",
+    "code": 200,
+    "data": {
+        "docList": [
+            {
+                "docId": "2021000001",
+                "docTitle": "[변경] DB데이터변경",
+                "createDate": "2021/04/27 15:35:15",
+                "endDate": "2021/04/27 17:16:05",
+                "aprvLimit": "2021/05/04",
+                "agentApproverName": "",
+                "rejectApproverName": "",
+                "execName": "dba01",
+                "execDate": "2021/04/27 17:16:05",
+                "groundsDocId": "근거-001",
+                "approveState": 2,
+                "execstate": 1,
+                "requestName": ""
+            }
+        ],
+        "docCount": 1
+    },
+    "messageCode": 200,
+    "serverMessage": "success"
+}
+```
