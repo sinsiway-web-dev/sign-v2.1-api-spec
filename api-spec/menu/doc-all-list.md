@@ -12,6 +12,7 @@
 |approvalState|1, 2, 3|Map|결재 상태<br/>1: 결재 중<br/>2 : 승인<br/>3 : 반려|
 |execState|1, 2, 3|Map|실행 상태<br/>1 : 실행 전<br/>2 : 성공<br/>3 : 실패|
 |docId|2021000001|String|결재 문서 번호|
+|docTitle|DB 데이터 변경 데스트|String|결재 문서 제목|
 |requestName|사용자01|String|기안자 이름|
 |execName|실행자01|String|실행자 이름|
 |approverName|결재자01|String|현재 결재자 이름|
@@ -24,6 +25,7 @@
     "approvalState":[1, 2, 3],
     "execState":[1, 2, 3],
     "docId":"2021000001",
+    "docTile":"DB 데이터 변경 테스트",
     "requestName":"사용자01",
     "execName":"실행자01",
     "approverName":"결재자01",
