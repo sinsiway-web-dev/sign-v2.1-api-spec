@@ -122,3 +122,106 @@
     }
 }
 ```
+
+# 결재 문서 결재자
+작성된 DB 데이터 변경 요청서의 결재자 정보를 조회합니다.
+
+## URL
+* /api/sign/doc/dataModify/approver
+* GET
+* application/x-www-form-urlencoded;charset=UTF-8
+## Request
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|*docId|2022000001|String|결재 문서 번호|
+```
+?docId=2022000001
+```
+## Response
+### 데이터 없음
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|code|204|int|결과 코드|
+|messageCode|204|int|결과 메시지 코드|
+|serverMessage|no content|String|서버용 결과 메시지
+|clientMessage|데이터가 없습니다.|String|클라이언트용 결과 메시지|
+|data||Map|결과 데이터|
+|docCount|0|int|조회한 결재 문서 수|
+|docList||Map|조회한 결재 문서 목록|
+
+```json
+{
+    "code": 204,
+    "messageCode": 204,
+    "serverMessage": "no content",
+    "clientMessage": "데이터가 없습니다.",
+    "data": {
+        "docList": [],
+        "docCount": 0
+    }    
+}
+```
+### 데이터 있음
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|code|200|int|결과 코드|
+|messageCode|200|int|결과 메시지 코드|
+|serverMessage|success|String|서버용 결과 메시지
+|clientMessage|처리되었습니다.|String|클라이언트용 결과 메시지|
+|data||Map|결과 데이터|
+|approver||Array|결재자 정보|
+|approveOrder|1|int|결재 순번|
+|approvePowerType|0|int|결재 권한 종류<br/>0: 결재<br/>1: DB데이터변경실행|
+|approveStatus|1|int|결재 상태<br/>1: 결재 전<br/>2: 승인<br/>3: 반려<br/>4: 후결|
+|approveDescribe||String|첨언|
+|approveDate||String|결재일|
+|approverName|결재자01|String|결재자 이름|
+|approverOrgUid|m01|String|결재자 ID|
+|approverTitle||String|결재자 직위|
+|approverOrgItemName|연구소|String|결재자 조직명|
+|agentApproverName||Sting|대리결재자 이름|
+|agentApproverOrgUid||String|대리결재자 ID|
+|agentApproverTitle||String|대리결재자 직위|
+|agentApproverOrgItemName||String|대리결재자 조직명|
+```json
+{
+    "code": 200,
+    "messageCode": 200,
+    "serverMessage": "success",
+    "clientMessage": "처리되었습니다.",
+    "data": {
+        "approver": [
+            {
+                "approveOrder": 1,
+                "approvePowerType": 0,
+                "approveStatus": 1,
+                "approveDescribe": "",
+                "approveDate": "",
+                "approverName": "결재자01",
+                "approverOrgUid": "m01",
+                "approverTitle": "",
+                "approverOrgItemName": "연구소",
+                "agentApproverName": "",
+                "agentApproverOrgUid": "",
+                "agentApproverTitle": "",
+                "agentApproverOrgItemName": ""
+            },
+            {
+                "approveOrder": 2,
+                "approvePowerType": 1,
+                "approveStatus": 1,
+                "approveDescribe": "",
+                "approveDate": "",
+                "approverName": "dba01",
+                "approverOrgUid": "dba01",
+                "approverTitle": "",
+                "approverOrgItemName": "연구소",
+                "agentApproverName": "",
+                "agentApproverOrgUid": "",
+                "agentApproverTitle": "",
+                "agentApproverOrgItemName": ""
+            }
+        ]
+    }
+}
+```
