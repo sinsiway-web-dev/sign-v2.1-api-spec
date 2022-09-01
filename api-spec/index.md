@@ -24,7 +24,7 @@
 |API|URL|HTTP Method|View|
 |---|---|---|---|
 |[전체](./menu/doc-all-list.md/#전체)|/api/sign/doc/dataModify|GET|관리자 용 전체 문서 목록 조회|
-|[전체](./menu/doc-all-list.md/#결재 정보 )|/api/sign/doc/dataModify/approver|GET|결재 정보 조회|
+|[전체](./menu/doc-all-list.md/#결재-문서-결재자)|/api/sign/doc/dataModify/approver|GET|결재 문서 결재자 정보 조회|
 ## 전자 결재 - 기안
 |API|URL|HTTP Method|View|
 |---|---|---|---|
