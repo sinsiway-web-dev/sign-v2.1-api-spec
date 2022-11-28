@@ -66,6 +66,7 @@ DB 데이터 변경 요청서 작성 시 DB 데이터 변경 SQL 제약 조건�
 |docTitle|\[변경\] DB데이터변경|String|문서 제목|
 |describe|DB데이터변경사유|String|사유|
 |groundsDocId|근거-001|String|근거 문서 번호|
+|groundsDocType|0|int|근거 문서 종류<br/>현대 캐피탈(0 : 공통 / 1 : 캐피탈 / 2 : Auto 지점용)|
 |dataModifyTargetId|34|int|변경 대상 ID|
 |beforeSql|select * from emp_sign where empno=1001|String|변경 전 검증SQL|
 |afterSql|select * from emp_sign where empno=1002|String|변경 후 검증SQL|
