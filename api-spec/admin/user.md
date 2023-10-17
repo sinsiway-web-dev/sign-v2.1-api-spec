@@ -162,6 +162,41 @@
 }
 ```
 ---
+# 사용자 휴대전화 변경
+사용자의 휴대전화 정보를 변경합니다.
+## URL
+* /api/sign/admin/user/mobile
+* PUT
+* application/json;charset=UTF-8
+## Request
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|*orgUid|u01|String|휴대전화 변경할 사용자의 로그인 ID|
+|*mobile|010-1234-5678|String|휴대전화 정보를 삭제하고 싶은 경우 공백|
+```json
+{
+    "orgUid": "u01",
+    "mobile": "010-1234-5678"
+}
+```
+## Response
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|code|200|int|결과 코드|
+|messageCode|200|int|결과 메시지 코드|
+|clientMessage|처리되었습니다.|String|클라이언트용 결과 메시지|
+|serverMessage|success|String|서버용 결과 메시지|
+|data||Map|결과 데이터|
+```json
+{
+    "code": 200,
+    "messageCode": 200,
+    "clientMessage": "처리되었습니다.",
+    "serverMessage": "success",
+    "data": {}
+}
+```
+---
 
 # 사용자 비밀번호 초기화
 사용자 비밀번호를 초기화 비밀번호로 변경합니다.
