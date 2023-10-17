@@ -146,6 +146,7 @@
 |roleId|0|String|역할 ID(0:없음)|
 |roleName||String|역할명|
 |email||String|이메일|
+|mobile||String|휴대전화|
 ```json
 {
     "code": 200,
@@ -163,7 +164,8 @@
                 "orgItemName": "개발1",
                 "roleId": "0",
                 "roleName": "",
-                "email": "u1@sinsiway.com"
+                "email": "u1@sinsiway.com",
+                "mobile": "010-1234-5678"
             },
             {
                 "ptuId": "101",
@@ -174,7 +176,8 @@
                 "orgItemName": "개발1",
                 "roleId": "1",
                 "roleName": "팀장",
-                "email": "au1@sinsiway.com"
+                "email": "au1@sinsiway.com",
+                "mobile": "010-1234-5678"
             }
         ]
     }
@@ -215,6 +218,7 @@
 |roleId|0|String|역할 ID(0:없음)|
 |roleName||String|역할명|
 |email|u01@sinsiway.com|String|이메일|
+|mobile||String|휴대전화|
 ```json
 {
     "code": 200,
@@ -232,7 +236,8 @@
                 "orgItemName": "연구소",
                 "roleId": "0",
                 "roleName": "",
-                "email": "u1@sinsiway.com"
+                "email": "u1@sinsiway.com",
+                "mobile": "010-1234-5678"
             }
         ]
     }
