@@ -13,13 +13,15 @@
 |ptoId|1|String|추가할 사용자의 조직 ID|
 |title|사원|String|추가할 사용자의 직위|
 |email|u1@sinsiway.com|String|추가할 사용자의 이메일|
+|mobile|010-1234-5678|String|추가할 사용자의 휴대전화|
 ```json
 {
     "orgUid":"u1",
     "name":"사용자1",
     "ptoId":"1",
     "title":"사원",
-    "email":"u1@sinsiway.com"
+    "email":"u1@sinsiway.com",
+    "mobile":"010-1234-5678"
 }
 ```
 ## Response
