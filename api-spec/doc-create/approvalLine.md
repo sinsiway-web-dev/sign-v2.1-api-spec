@@ -50,7 +50,7 @@
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
 |*apvLineId|32|int|결재선 ID|
-|*orgUid|377|int|기안자 ID|
+|*orgUid|377|String|기안자 ID|
 |*ptoId|377|int|기안자 조직 ID|
 ```
 ?apvLineId=32&orgUid=u1&ptoId=377
