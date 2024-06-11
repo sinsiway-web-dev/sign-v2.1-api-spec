@@ -1,5 +1,5 @@
-# 근거 문서 조회 URL
-URL 호출을 통해 연동할 근거 문서 정보를 조회합니다.
+# 근거 문서 선택 목록 조회
+고객사에서 제공한 API 호출을 통해 연동할 근거 문서 정보를 조회합니다.
 ## URL
 * /api/sign/doc/dataModify/groundsDoc
 * GET
@@ -7,24 +7,42 @@ URL 호출을 통해 연동할 근거 문서 정보를 조회합니다.
 ## Request
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
-|*apiURL|http://1.1.1.1/sign/groundsDoc|String|근거 문서 조회 URL|
-```
-?apiURL=http://1.1.1.1/sign/groundsDoc
+|*customerType|1|String|고객사 종류<br/>1 : 블루월넛|
+|*request|author_name=홍길동|String|검색 조건|
+```json
+{
+    "customerType" : 1,
+    "request" : "author_name=홍길동"
+}
 ```
 ## Response
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
 |code|200|int|결과 코드|
+|message||String|결과 메시지|
 |data||Map|결과 데이터|
 |groundsDoc||String|데이터 교환 언어 형식의 정보|
-|message||String|결과 메시지|
 ```json
 {
     "code": 200,
+    "message": "처리되었습니다.",
     "data": {
-        "groundsDoc": "<application xmlns=\"http://..."
-    },
-    "message": ""
+        "groundsDoc": [
+            {
+                "issue_id": 1,
+                "issue_subject": "일감_1",
+                "project_id": 71,
+                "project_name": "프로젝트_72",
+                "tracker_id": 60,
+                "tracker_name": "프로젝트 하위 그룹_61",
+                "status_id": 1,
+                "status_name": "최초 요청",
+                "author_id": 1,
+                "author_name": "홍길동"
+            }
+        ],
+        "message": ""
+    }
 }
 ```
 
@@ -259,5 +277,44 @@ URL 호출을 통해 근거 문서 상태 정보를 조회합니다.
     "data": {},
     "messageCode": 200,
     "serverMessage": "success"
+}
+```
+
+# 근거 문서 실행 가능 여부 확인
+고객사에서 제공한 API 호출을 통해 연동한 근거 문서의 상태가 실행 가능 상태인지를 확인하는 기능을 제공합니다.
+## URL
+* /api/sign/doc/dataModify/groundsDoc/isModifiable
+* GET
+* application/json;charset=UTF-8
+## Request
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|*customerType|1|String|고객사 종류<br/>1 : 블루월넛|
+|*request|issue_id=10|String|검색 조건|
+```json
+{
+    "customerType" : 1,
+    "request" : "issue_id=10"
+}
+```
+## Response
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|code|200|int|결과 코드|
+|messageCode|200|int|결과 메시지 코드|
+|serverMessage|success|String|서버용 결과 메시지|
+|clientMessage|처리되었습니다.|String|클라이언트용 결과 메시지|
+|data||Map|결과 데이터|
+|isModifiable|true|String|실행 가능 여부<br/>true : 실행 가능<br/>false : 실행 불가능|
+```json
+{
+    "code": 200,
+    "messageCode": 200,
+    "clientMessage": "처리되었습니다.",
+    "serverMessage": "success",
+    "data": {
+        "message": "",
+        "isModifiable": true
+    }
 }
 ```
