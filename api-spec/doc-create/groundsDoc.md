@@ -8,11 +8,11 @@
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
 |*customerType|1|String|고객사 종류<br/>1 : 블루월넛|
-|*request|author_name=홍길동|String|검색 조건|
+|*request|홍길동|String|검색 조건|
 ```json
 {
     "customerType" : 1,
-    "request" : "author_name=홍길동"
+    "request" : "홍길동"
 }
 ```
 ## Response
