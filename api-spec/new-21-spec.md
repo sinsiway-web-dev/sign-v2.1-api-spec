@@ -1020,3 +1020,46 @@ SQL 그룹의 실행을 반려합니다.
 ```
 
 
+## 실행 로그 조회
+- SQL 그룹 실행 상태가 2: 실행 성공, 3: 커밋 상태일 시 호출 가능합니다.
+### URL
+* /api/sign/doc/dataModify/log
+* get
+* application/x-www-form-urlencoded;charset=UTF-8
+
+### Request
+| 항목          | 값(예시)      | 타입     | 설명        |
+|-------------|------------|--------|-----------|
+| *sqlGroupId | 23         | String | SQL 그룹 ID |
+
+```text
+?sqlGroupId=23
+```
+
+### Response
+| 항목         | 값(예시)      | 타입     | 설명     |
+|------------|------------|--------|--------|
+| code       | 200        | int    | 결과 코드  |
+| message    |            | String | 결과 메시지 |
+| data       |            | Map    | 결과 데이터 |
+| execLog    |            | String | 실행 로그  |
+
+[성공]
+```json
+{
+    "code": 200,
+    "data": {
+      "execLog": "INSERT 1\nUPDATE 4\ncommit"
+    },
+    "message": "처리되었습니다."
+}
+```
+
+[실패]
+```json
+{
+    "code": 500,
+    "data": {},
+    "message": "처리에 실패하였습니다."
+}
+```
