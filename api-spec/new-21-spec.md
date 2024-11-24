@@ -131,15 +131,38 @@
 | code          | 200   | int    | 결과 코드                                       |
 | data          |       | Map    | 결과 데이터                                      |
 | docExecStatus | 3     | String | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행 |
+| isSqlGroupFail          |  false     | boolean    | SQL 그룹 실행 실패 여부  실패: true, 성공: false                                    |
+| rolledBackCount          | 2 | int     | 실패 시 자동 롤백된 SQL 그룹 갯수                                      |
+| rolledBackSqlGroup          |  SQL 그룹 2, SQL 그룹 3     | Array<String>    | 실패 시 자동 롤백된 SQL 그룹 별칭 리스트                                      |
 
 [성공]
 ```json
 {
     "code": 200,
+    "message": "처리되었습니다.",
     "data": {
-      "docExecStatus": 2
-    },
-    "message": "처리되었습니다."
+        "docExecStatus": 2,
+        "isSqlGroupFail": false,
+        "rolledBackCount": 0,
+        "rolledBackSqlGroup": []
+    }
+}
+```
+
+[SQL 그룹 실행 실패]
+```json
+{
+    "code": 200,
+    "message": "처리되었습니다.",
+    "data": {
+        "docExecStatus": 3,
+        "isSqlGroupFail": true,
+        "rolledBackCount": 2,
+        "rolledBackSqlGroup": [
+            "SQL 그룹 2",
+            "SQL 그룹 3"
+        ]
+    }
 }
 ```
 
@@ -178,24 +201,47 @@
 | code          | 200   | int    | 결과 코드                                       |
 | data          |       | Map    | 결과 데이터                                      |
 | docExecStatus | 3     | String | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행 |
+| isSqlGroupFail          |  false     | boolean    | SQL 그룹 실행 실패 여부  실패: true, 성공: false                                    |
+| rolledBackCount          | 2 | int     | 실패 시 자동 롤백된 SQL 그룹 갯수                                      |
+| rolledBackSqlGroup          |  SQL 그룹 2, SQL 그룹 3     | Array<String>    | 실패 시 자동 롤백된 SQL 그룹 별칭 리스트                                      |
 
 [성공]
 ```json
 {
     "code": 200,
+    "message": "처리되었습니다.",
     "data": {
-      "docExecStatus": 2
-    },
-    "message": "처리되었습니다."
+        "docExecStatus": 2,
+        "isSqlGroupFail": false,
+        "rolledBackCount": 0,
+        "rolledBackSqlGroup": []
+    }
+}
+```
+
+[SQL 그룹 실행 실패]
+```json
+{
+    "code": 200,
+    "message": "처리되었습니다.",
+    "data": {
+        "docExecStatus": 3,
+        "isSqlGroupFail": true,
+        "rolledBackCount": 2,
+        "rolledBackSqlGroup": [
+            "SQL 그룹 2",
+            "SQL 그룹 3"
+        ]
+    }
 }
 ```
 
 [실패]
 ```json
 {
-  "code": 500,
-  "data": {},
-  "message": "처리에 실패하였습니다."
+    "code": 500,
+    "data": {},
+    "message": "처리에 실패하였습니다."
 }
 ```
 
