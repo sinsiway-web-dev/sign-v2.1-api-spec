@@ -110,13 +110,15 @@
 ### Request
 | 항목                 | 값(예시)                 | 타입            | 설명                                 |
 |--------------------|-----------------------|---------------|------------------------------------|
-| *execId            | 109923-sdf89sd6-ASD21 | String        | 실행 ID                              |
+| *docId            | 2024000002 | String        | 문서 번호                              |
+| *orgUid            | user01 | String        | 사용자 ID                              |
 | dataEncryptionFlag | 0                     | int           | 암호화 여부<br/>0 : 평문(기본값)<br/>1 : 암호화 |
 | *sqlGroupId        | 23, 22                | Array<String> | SQL 그룹 ID 목록                       |
 
 ```json
 {
-    "execId": "109923-sdf89sd6-ASD21",
+    "docId": "2024000002",
+    "orgUid": "user01",
     "dataEncryptionFlag": 0,
     "sqlGroupId": [
         "23", 
@@ -185,12 +187,14 @@
 ### Request
 | 항목                 | 값(예시)                 | 타입            | 설명                                 |
 |--------------------|-----------------------|---------------|------------------------------------|
-| *execId            | 109923-sdf89sd6-ASD21 | String        | 실행 ID                              |
+| *docId            | 2024000002 | String        | 문서 번호                              |
+| *orgUid            | user01 | String        | 사용자 ID                              |
 | dataEncryptionFlag | 0                     | int           | 암호화 여부<br/>0 : 평문(기본값)<br/>1 : 암호화 |
 
 ```json
 {
-    "execId": "109923-sdf89sd6-ASD21",
+    "docId": "2024000002",
+    "orgUid": "user01",
     "dataEncryptionFlag": 0
 }
 ```
