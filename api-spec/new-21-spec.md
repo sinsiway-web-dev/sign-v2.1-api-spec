@@ -249,7 +249,7 @@
 }
 ```
 
-## 부분 커밋
+## 커밋
 실행 성공한 SQL 그룹의 변경 사항을 커밋합니다.
 - 실행 상태(execResultCode = 2)인 SQL 그룹이 1개 이상 있어야 합니다.
 ### URL
@@ -260,11 +260,13 @@
 ### Request
 | 항목                 | 값(예시)                 | 타입            | 설명                                 |
 |--------------------|-----------------------|---------------|------------------------------------|
-| *execId            | 109923-sdf89sd6-ASD21 | String        | 실행 ID                              |
+| *docId            | 2024000002 | String        | 문서 번호                              |
+| *orgUid            | user01 | String        | 사용자 ID                              |
 
 ```json
 {
-    "execId": "109923-sdf89sd6-ASD21"
+    "docId" : "2024000176",
+    "orgUid" : "user01"
 }
 ```
 
@@ -309,67 +311,7 @@
 }
 ```
 
-## 전체 커밋
-전체 SQL 그룹의 변경 사항을 커밋합니다.
-- 모든 SQL 그룹이 실행 상태(execResultCode = 2)여야 합니다.
-### URL
-* /api/sign/doc/dataModify/sql-group/commit-all
-* POST
-* application/json;charset=UTF-8
-
-### Request
-| 항목                 | 값(예시)                 | 타입            | 설명                                 |
-|--------------------|-----------------------|---------------|------------------------------------|
-| *execId            | 109923-sdf89sd6-ASD21 | String        | 실행 ID                              |
-
-```json
-{
-    "execId": "109923-sdf89sd6-ASD21"
-}
-```
-
-### Response
-| 항목                | 값(예시) | 타입     | 설명                                                                                          |
-|-------------------|-------|--------|---------------------------------------------------------------------------------------------|
-| docExecStatus     | 3     | String | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행                                                 |
-| committedSqlGroup |       | Array  | 커밋된 SQL 그룹 리스트                                                                              |
-| sqlGroupId        | 129   | String | SQL 그룹 ID                                                                                   |
-| execResultCode    | 1     | int    | SQL 그룹 실행 결과 코드<br>1: 실행 전<br>2: 실행 성공<br>3: 커밋<br>4: 롤백<br>5:실행 실패<br>6: 자동 롤백<br>7: 실행 반려 |
-
-[성공]
-```json
-{
-    "code": 200,
-    "data": {
-        "docExecStatus": 2,
-        "committedSqlGroup" :[
-            {
-                "sqlGroupId" : "23",
-                "execResultCode" : 3
-            },
-            {
-                "sqlGroupId" : "44",
-                "execResultCode" : 3
-            }
-        ]
-    },
-    "message": "처리되었습니다."
-}
-```
-
-[실패]
-- 실행 ID가 만료되고 변경 대상과의 커넥션이 해제됩니다.
-```json
-{
-  "code": 500,
-  "message": "처리에 실패하였습니다.",
-  "data": {
-    "docExecStatus": 0
-  }
-}
-```
-
-## 부분 롤백
+## 롤백
 실행 성공한 SQL 그룹의 변경 사항을 롤백합니다.
 - 실행 상태(execResultCode = 2)인 SQL 그룹이 1개 이상 있어야 합니다.
 ### URL
@@ -380,71 +322,13 @@
 ### Request
 | 항목                 | 값(예시)                 | 타입            | 설명                                 |
 |--------------------|-----------------------|---------------|------------------------------------|
-| *execId            | 109923-sdf89sd6-ASD21 | String        | 실행 ID                              |
+| *docId            | 2024000002 | String        | 문서 번호                              |
+| *orgUid            | user01 | String        | 사용자 ID                              |
 
 ```json
 {
-    "execId": "109923-sdf89sd6-ASD21"
-}
-```
-
-### Response
-| 항목                 | 값(예시) | 타입     | 설명                                                                                          |
-|--------------------|-------|--------|---------------------------------------------------------------------------------------------|
-| docExecStatus      | 3     | String | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행                                                 |
-| rolledBackSqlGroup |       | Array  | 커밋된 SQL 그룹 리스트                                                                              |
-| sqlGroupId         | 129   | String | SQL 그룹 ID                                                                                   |
-| execResultCode     | 1     | int    | SQL 그룹 실행 결과 코드<br>1: 실행 전<br>2: 실행 성공<br>3: 커밋<br>4: 롤백<br>5:실행 실패<br>6: 자동 롤백<br>7: 실행 반려 |
-
-[성공]
-```json
-{
-    "code": 200,
-    "data": {
-        "docExecStatus": 2,
-        "rolledBackSqlGroup" :[
-            {
-                "sqlGroupId" : "23",
-                "execResultCode" : 4
-            },
-            {
-                "sqlGroupId" : "44",
-                "execResultCode" : 4
-            }
-        ]
-    },
-    "message": "처리되었습니다."
-}
-```
-
-[실패]
-- 실행 ID가 만료되고 변경 대상과의 커넥션이 해제됩니다.
-```json
-{
-  "code": 500,
-  "message": "처리에 실패하였습니다.",
-  "data": {
-    "docExecStatus": 0
-  }
-}
-```
-
-## 전체 롤백
-전체 SQL 그룹의 변경 사항을 롤백합니다.
-- 모든 SQL 그룹이 실행 상태(execResultCode = 2)여야 합니다.
-### URL
-* /api/sign/doc/dataModify/sql-group/rollback-all
-* POST
-* application/json;charset=UTF-8
-
-### Request
-| 항목                 | 값(예시)                 | 타입            | 설명                                 |
-|--------------------|-----------------------|---------------|------------------------------------|
-| *execId            | 109923-sdf89sd6-ASD21 | String        | 실행 ID                              |
-
-```json
-{
-    "execId": "e594ad39-a2b8-492d-af9e-83a001358df8"
+  "docId" : "2024000176",
+  "orgUid" : "cgpark"
 }
 ```
 
@@ -500,16 +384,17 @@ SQL 그룹의 실행을 반려합니다.
 ### Request
 | 항목                 | 값(예시)                 | 타입            | 설명                                 |
 |--------------------|-----------------------|---------------|------------------------------------|
-| *execId            | 109923-sdf89sd6-ASD21 | String        | 실행 ID                              |
+| *docId            | 2024000002 | String        | 문서 번호                              |
+| *orgUid            | user01 | String        | 사용자 ID                              |
 | *sqlGroupId        | 23, 22                | Array<String> | SQL 그룹 ID 목록                       |
 
 ```json
 {
-    "execId": "e594ad39-a2b8-492d-af9e-83a001358df8",
-    "sqlGroupId": [
-      "123", 
-      "876"
-    ]
+  "docId" : "2024000179",
+  "orgUid" : "user01",
+  "sqlGroupId": [
+    "4430"
+  ]
 }
 ```
 
@@ -565,11 +450,13 @@ SQL 그룹의 실행을 반려합니다.
 ### Request
 | 항목                 | 값(예시)                 | 타입            | 설명                                 |
 |--------------------|-----------------------|---------------|------------------------------------|
-| *execId            | 109923-sdf89sd6-ASD21 | String        | 실행 ID                              |
+| *docId            | 2024000002 | String        | 문서 번호                              |
+| *orgUid            | user01 | String        | 사용자 ID                              |
 
 ```json
 {
-    "execId": "e594ad39-a2b8-492d-af9e-83a001358df8"
+    "docId" : "2024000174",
+    "orgUid" : "user01"
 }
 ```
 
@@ -622,32 +509,35 @@ SQL 그룹의 실행을 반려합니다.
 * application/x-www-form-urlencoded;charset=UTF-8
 
 ### Request
-| 항목      | 값(예시)                 | 타입     | 설명    |
-|---------|-----------------------|--------|-------|
-| *execId | 109923-sdf89sd6-ASD21 | String | 실행 ID |
+| 항목         | 값(예시)      | 타입       | 설명                  |
+|------------|------------|----------|---------------------|
+| *docId     | 2024000002 | String   | 문서 번호               |
+| *orgUid    | user01     | String   | 사용자 ID              |
 
 ```text
-?execId=109923-sdf89sd6-ASD21
+?docId=2024000179&orgUid=user01
 ```
 
 ### Response
-| 항목             | 값(예시)                                                       | 타입      | 설명                                                                                          |
-|----------------|-------------------------------------------------------------|---------|---------------------------------------------------------------------------------------------|
-| code           | 200                                                         | int     | 결과 코드                                                                                       |
-| data           |                                                             | Map     | 결과 데이터                                                                                      |
-| docExecStatus  | 3                                                           | String  | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행                                                 |
-| sqlGroup       |                                                             | Array   | SQL 그룹 리스트                                                                                  |
-| sqlGroupId     | 110                                                         | String  | SQL 그룹 ID                                                                                   |
-| sqlGroupName   | SQL 그룹 1                                                    | String  | SQL 그룹 이름                                                                                   |
-| execResultCode | 1                                                           | int     | SQL 그룹 실행 결과 코드<br>1: 실행 전<br>2: 실행 성공<br>3: 커밋<br>4: 롤백<br>5:실행 실패<br>6: 자동 롤백<br>7: 실행 반려 |
-| modifySql      | update emp_sign set empno=1002 where empno=1001             | String  | 변경 SQL                                                                                      |
-| beforeSql      | select * from emp_sign where empno=1001                     | String  | 변경 전 검증SQL                                                                                  |
-| afterSql       | select * from emp_sign where empno=1002                     | String  | 변경 후 검증SQL                                                                                  |
-| isLogExist     | true                                                        | boolean | 실행 로그 존재 여부                                                                                 |
-| beforeCount    | 10                                                          | int     | 실행 전 검증 데이터 건수                                                                              |
-| afterCount     | 14                                                          | int     | 실행 후 검증 데이터 건수                                                                              |
-| failMessage    | 변경 SQL 오류 : ORA-01861: literal does not match format string | String  | 실행 실페 메시지                                                                                   |
-| execDate       | 2024/11/12 10:23:22                                         | String  | 실행일                                                                                         |
+| 항목             | 값(예시)                                                        | 타입      | 설명                                                                                          |
+|----------------|--------------------------------------------------------------|---------|---------------------------------------------------------------------------------------------|
+| code           | 200                                                          | int     | 결과 코드                                                                                       |
+| data           |                                                              | Map     | 결과 데이터                                                                                      |
+| docExecStatus  | 3                                                            | String  | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행                                                 |
+| canExecuteAll  | 3                                                            | boolean | 전체 실행 가능 여부<br>true: 전체 실행 가능<br>false: 전체 실행 불가능                                           |
+| sqlGroup       |                                                              | Array   | SQL 그룹 리스트                                                                                  |
+| sqlGroupId     | 110                                                          | String  | SQL 그룹 ID                                                                                   |
+| sqlGroupName   | SQL 그룹 1                                                     | String  | SQL 그룹 이름                                                                                   |
+| execResultCode | 1                                                            | int     | SQL 그룹 실행 결과 코드<br>1: 실행 전<br>2: 실행 성공<br>3: 커밋<br>4: 롤백<br>5:실행 실패<br>6: 자동 롤백<br>7: 실행 반려 |
+| modifySql      | update emp_sign set empno=1002 where empno=1001              | String  | 변경 SQL                                                                                      |
+| beforeSql      | select * from emp_sign where empno=1001                      | String  | 변경 전 검증SQL                                                                                  |
+| afterSql       | select * from emp_sign where empno=1002                      | String  | 변경 후 검증SQL                                                                                  |
+| isLogExist     | true                                                         | boolean | 실행 로그 존재 여부                                                                                 |
+| beforeCount    | 10                                                           | int     | 실행 전 검증 데이터 건수                                                                              |
+| afterCount     | 14                                                           | int     | 실행 후 검증 데이터 건수                                                                              |
+| failMessage    | 변경 SQL 오류 : ORA-01861: literal does not match format string  | String  | 실행 실페 메시지                                                                                   |
+| execDate       | 2024/11/12 10:23:22                                          | String  | 실행일                                                                                         |
+| canExecute     | true                                                         | boolean | 실행 가능 여부<br>true: 실행 가능<br>false: 실행 불가능                                                    |
 
 [성공]
 ```json
@@ -710,6 +600,51 @@ SQL 그룹의 실행을 반려합니다.
 }
 ```
 
+## 반려 가능 상태 조회
+반려 전 SQL 그룹의 상태 코드를 조회합니다.
+### URL
+* /api/sign/doc/dataModify/sql-group/reject-status
+* post
+* application/x-www-form-urlencoded;charset=UTF-8
+*
+### Request
+| 항목                 | 값(예시)        | 타입     | 설명                             |
+|--------------------|--------------|--------|--------------------------------|
+| *docId             | 2024000002   | String       | 문서 번호                          |
+| *orgUid            | user01       | String       | 사용자 ID                         |
+
+```text
+?docId=2024000179&orgUid=user01
+```
+
+### Response
+| 항목                | 값(예시) | 타입  | 설명                                                                                                                                                            |
+|-------------------|-------|-----|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| code              | 200   | int | 결과 코드                                                                                                                                                         |
+| data              |       | Map | 결과 데이터                                                                                                                                                        |
+| rejectableStatus  | 1     | int | 반려 가능 상태<br>1: 전부 실행전(전체 반려 가능)<br>2: 실행 성공, 실행 전 SQL 그룹만 존재<br>3: 실행 완료(롤백, 커밋, 실패, 반려), 실행 전 SQL 그룹만 존재<br>4: 실행 성공, 실행 완료 SQL 그룹 존재<br>5: 전부 실행 완료(반려 불가능) |
+
+[성공]
+```json
+{
+    "code": 200,
+    "message": "처리되었습니다.",
+    "data": {
+        "rejectableStatus": 3
+    }
+}
+```
+[성공]
+```json
+{
+    "code": 500,
+    "message": "처리에 실패하였습니다.",
+    "data": {
+        "rejectableStatus": -1
+    }
+}
+```
+
 ## 실행 중 이탈
 
 ### URL
@@ -718,13 +653,16 @@ SQL 그룹의 실행을 반려합니다.
 * application/x-www-form-urlencoded;charset=UTF-8
 *
 ### Request
-| 항목      | 값(예시)                 | 타입     | 설명    |
-|---------|-----------------------|--------|-------|
-| *execId | 109923-sdf89sd6-ASD21 | String | 실행 ID |
+| 항목                 | 값(예시)        | 타입     | 설명                             |
+|--------------------|--------------|--------|--------------------------------|
+| *docId             | 2024000002   | String       | 문서 번호                          |
+| *orgUid            | user01       | String       | 사용자 ID                         |
+
 
 ```json
 {
-    "execId": "109923-sdf89sd6-ASD21"
+    "docId": "2024000179",
+    "orgUid" : "cgpark"
 }
 ```
 
@@ -761,7 +699,7 @@ SQL 그룹의 실행을 반려합니다.
 ?docId=2024000007&orgUid=user01
 ```
 
-## Response
+### Response
 | 항목                       | 값(예시)                                                       | 타입      | 설명                                                                                                                                                                                                                  |
 |--------------------------|-------------------------------------------------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | code                     | 200                                                         | int     | 결과 코드                                                                                                                                                                                                               |
@@ -781,7 +719,7 @@ SQL 그룹의 실행을 반려합니다.
 | agentApproverTitle       |                                                             | String  | 대리결재자 직위                                                                                                                                                                                                            |
 | agentApproverOrgItemName |                                                             | String  | 대리결재자 조직명                                                                                                                                                                                                           |
 | dataModifyInfo           |                                                             | Map     | 변경 실행 정보                                                                                                                                                                                                            |
-| docExecStatus            | 3                                                           | int     | 문서 실행 상태                                                                                                                                                                                                            |
+| canExecuteAll            | true                                                        | boolean | 전체 실행 가능 여부<br>true: 전체 실행 가능<br>false: 전체 실행 불가능                                                                                                                                                                   |
 | docExecStatus            | 3                                                           | String  | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행                                                                                                                                                                         |
 | docExecDate              | 2024/11/14 16:47:25                                         | String  | 문서 실행 완료일                                                                                                                                                                                                           |
 | sqlGroup                 |                                                             | Array   | SQL 그룹                                                                                                                                                                                                              |
@@ -797,6 +735,7 @@ SQL 그룹의 실행을 반려합니다.
 | execResultCode           | 1                                                           | int     | SQL 그룹 실행 결과 코드<br>1: 실행 전<br>2: 실행 성공<br>3: 커밋<br>4: 롤백<br>5:실행 실패<br>6: 자동 롤백<br>7: 실행 반려                                                                                                                         |
 | isExecLogExist           | true                                                        | boolean | 실행 로그 존재 여부                                                                                                                                                                                                         |
 | execDate                 | 2024/11/12 10:23:22                                         | String  | 실행일                                                                                                                                                                                                                 |
+| canExecute               | false                                                       | int     | 실행 가능 여부<br>true: 실행 거능<br>false: 실행 불가능                                                                                                                                                                            |
 | doc                      |                                                             | Map     | 결재 문서 정보                                                                                                                                                                                                            |
 | currentState             | 6                                                           | int     | 결재 문서 상태<br/>0 : 작성중<br/>1 : 요청<br/>2 : 승인<br/>3 : 반려<br/>4 : 후결<br/>5 : 유효 기간 경과<br/>6 : 무효<br/>7 : 권한 부여 승인<br/>8 : 권한 부여 반려<br/>9 : 권한 회수<br/>10 : 실행 완료<br/>11 : 실행 불가<br/>12 : 권한 부여 유효 기간 경과<br/>13 : 결재 진행 중 |
 | currentApproveOrder      | 1                                                           | int     | 결재 중인 결재자 순번                                                                                                                                                                                                        |
@@ -814,6 +753,7 @@ SQL 그룹의 실행을 반려합니다.
 | dataModifyTargetName     | PROD                                                        | String  | 변경 대상명                                                                                                                                                                                                              |
 | dbTypeText               | ORACLE                                                      | String  | DB종류                                                                                                                                                                                                                |
 | message                  |                                                             | String  | 결과 메시지                                                                                                                                                                                                              |
+
 ```json
 {
     "code": 200,
@@ -826,14 +766,14 @@ SQL 그룹의 실행을 반려합니다.
                 "approveStatus": 1,
                 "approveDescribe": "",
                 "approveDate": "",
-                "approverName": "테스트1",
-                "approverOrgUid": "test1",
+                "approverName": "결쟈자",
+                "approverOrgUid": "user01",
                 "approverTitle": "",
                 "approverOrgItemName": "sinsiway",
-                "agentApproverName": "",
-                "agentApproverOrgUid": "",
+                "agentApproverName": "테스트",
+                "agentApproverOrgUid": "test",
                 "agentApproverTitle": "",
-                "agentApproverOrgItemName": ""
+                "agentApproverOrgItemName": "sinsiway"
             },
             {
                 "approveOrder": 2,
@@ -841,10 +781,10 @@ SQL 그룹의 실행을 반려합니다.
                 "approveStatus": 1,
                 "approveDescribe": "",
                 "approveDate": "",
-                "approverName": "테스트2",
-                "approverOrgUid": "test2",
+                "approverName": "실행자",
+                "approverOrgUid": "user02",
                 "approverTitle": "",
-                "approverOrgItemName": "sinsiway",
+                "approverOrgItemName": "",
                 "agentApproverName": "",
                 "agentApproverOrgUid": "",
                 "agentApproverTitle": "",
@@ -852,49 +792,52 @@ SQL 그룹의 실행을 반려합니다.
             }
         ],
         "dataModifyInfo": {
-            "docExecStatus": 3,
-            "docExecDate": "2024/11/14 16:47:25",
+            "docExecStatus": 2,
+            "canExecuteAll": false,
+            "docExecDate": "",
             "sqlGroup": [
                 {
-                    "sqlGroupId": "89",
-                    "sqlGroupName": "testSQL 그룹 1",
+                    "sqlGroupId": "4430",
+                    "sqlGroupName": "SQL 그룹 1",
                     "execMsg": "",
-                    "beforeCount": 11,
-                    "afterCount": 11,
-                    "beforeSql": "select * from emp;",
-                    "afterSql": "select * from emp;",
-                    "modifySql": "insert into dept values(1001, 'test', 'test');",
+                    "beforeCount": 0,
+                    "afterCount": 0,
+                    "beforeSql": "SELECT * FROM DEPT;",
+                    "afterSql": "",
+                    "modifySql": "insert into dept values(dept_seq.nextval, 'test', 'kor');\ninsert into dept values(dept_seq.nextval, 'test', 'kor');\ninsert into dept values(dept_seq.nextval, 'test', 'kor');",
                     "sqlType": 1,
-                    "execResultCode": 3,
-                    "isExecLogExist": true,
-                    "execDate": "2024/11/14 16:43:35"
+                    "execResultCode": 7,
+                    "isExecLogExist": false,
+                    "execDate": "2024/11/30 19:49:21",
+                    "canExecute": false
                 },
                 {
-                    "sqlGroupId": "123",
-                    "sqlGroupName": "testSQL 그룹 2",
+                    "sqlGroupId": "4433",
+                    "sqlGroupName": "SQL 그룹 2",
                     "execMsg": "",
-                    "beforeCount": 11,
-                    "afterCount": 11,
-                    "beforeSql": "select * from emp;",
-                    "afterSql": "select * from emp;",
-                    "modifySql": "insert into dept values(1002, 'test', 'test');",
+                    "beforeCount": 0,
+                    "afterCount": 0,
+                    "beforeSql": "SELECT * FROM DEPT;",
+                    "afterSql": "",
+                    "modifySql": "update dept set loc = 'KOR' where loc = 'kor';",
                     "sqlType": 1,
-                    "execResultCode": 3,
-                    "isExecLogExist": true,
-                    "execDate": "2024/11/14 16:55:35"
+                    "execResultCode": 1,
+                    "isExecLogExist": false,
+                    "execDate": "",
+                    "canExecute": true
                 }
             ]
         },
         "doc": {
             "currentState": 1,
             "currentApproveOrder": 1,
-            "docId": "2024000007",
+            "docId": "2024000179",
             "groundsDocId": "",
-            "createDate": "2024/11/14 16:46:48",
-            "aprvLimit": "2024/12/05",
-            "requestOrgUid": "test",
-            "requestName": "테스트",
-            "docTitle": "[변경] DB데이터변경",
+            "createDate": "2024/11/30 19:52:41",
+            "aprvLimit": "2024/12/01",
+            "requestOrgUid": "cgpark",
+            "requestName": "박찬규",
+            "docTitle": "test",
             "requestDescribe": "DB데이터변경사유"
         },
         "dataModifyTarget": {
@@ -1069,6 +1012,51 @@ SQL 그룹의 실행을 반려합니다.
 }
 ```
 
+## 변경 전 데이터 건수 조회
+- SQL 그룹 실행 상태가 1: 실행 전 상태일 시 호출 가능합니다.
+### URL
+* /api/sign/doc/dataModify/sql-group/before-count
+* get
+* application/x-www-form-urlencoded;charset=UTF-8
+
+### Request
+| 항목          | 값(예시)      | 타입     | 설명        |
+|-------------|------------|--------|-----------|
+| *docId      | 2024000005 | String | 문서 ID     |
+| *sqlGroupId | 23         | String | SQL 그룹 ID |
+
+```text
+?docId=2024000005&sqlGroupId=23
+```
+
+### Response
+| 항목          | 값(예시)      | 타입     | 설명             |
+|-------------|------------|--------|----------------|
+| code        | 200        | int    | 결과 코드          |
+| data        |            | Map    | 결과 데이터         |
+| message     |            | String | 결과 메시지         |
+| beforeCount |            | int    | 변경 전 데이터 예상 건수 |
+
+[성공]
+```json
+{
+    "code": 200,
+    "message": "처리되었습니다.",
+    "data": {
+        "beforeCount": 11
+    }
+}
+```
+
+[실패]
+```json
+{
+    "code": 500,
+    "data": {},
+    "message": "처리에 실패하였습니다."
+}
+```
+
 ## 실행 로그 조회
 - SQL 그룹 실행 상태가 2: 실행 성공, 3: 커밋 상태일 시 호출 가능합니다.
 ### URL
@@ -1113,30 +1101,29 @@ SQL 그룹의 실행을 반려합니다.
 }
 ```
 
-## 변경 전 데이터 건수 조회
-- SQL 그룹 실행 상태가 1: 실행 전 상태일 시 호출 가능합니다.
+## 문서 전체 실행 로그 조회
+문서 전체의 실행 로그를 조회합니다.
 ### URL
-* /api/sign/doc/dataModify/sql-group/before-count
+* /api/sign/doc/dataModify/doc-log
 * get
 * application/x-www-form-urlencoded;charset=UTF-8
 
 ### Request
-| 항목          | 값(예시)      | 타입     | 설명        |
-|-------------|------------|--------|-----------|
-| *docId      | 2024000005 | String | 문서 ID     |
-| *sqlGroupId | 23         | String | SQL 그룹 ID |
+| 항목          | 값(예시)      | 타입         | 설명             |
+|-------------|------------|------------|----------------|
+| *docId      | 2024000002 | String     | 문서 번호          |
 
 ```text
-?docId=2024000005&sqlGroupId=23
+?docId=2024000176
 ```
 
 ### Response
-| 항목          | 값(예시)      | 타입     | 설명             |
-|-------------|------------|--------|----------------|
-| code        | 200        | int    | 결과 코드          |
-| data        |            | Map    | 결과 데이터         |
-| message     |            | String | 결과 메시지         |
-| beforeCount |            | int    | 변경 전 데이터 예상 건수 |
+| 항목         | 값(예시)      | 타입     | 설명     |
+|------------|------------|--------|--------|
+| code       | 200        | int    | 결과 코드  |
+| message    |            | String | 결과 메시지 |
+| data       |            | Map    | 결과 데이터 |
+| execLog    |            | String | 실행 로그  |
 
 [성공]
 ```json
@@ -1144,7 +1131,7 @@ SQL 그룹의 실행을 반려합니다.
     "code": 200,
     "message": "처리되었습니다.",
     "data": {
-        "beforeCount": 11
+        "execLog": "INSERT 1\nINSERT 1\nINSERT 1\nUPDATE 3\nrollback\nINSERT 1\nINSERT 1\nINSERT 1\nUPDATE 3\nrollback\nUPDATE 0\ncommit\nINSERT 1\nINSERT 1\nINSERT 1\nINSERT 1\nINSERT 1\nINSERT 1\ncommit\n"
     }
 }
 ```
