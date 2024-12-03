@@ -205,9 +205,12 @@
 | code          | 200   | int    | 결과 코드                                       |
 | data          |       | Map    | 결과 데이터                                      |
 | docExecStatus | 3     | String | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행 |
-| isSqlGroupFail          |  false     | boolean    | SQL 그룹 실행 실패 여부  실패: true, 성공: false                                    |
-| rolledBackCount          | 2 | int     | 실패 시 자동 롤백된 SQL 그룹 갯수                                      |
-| rolledBackSqlGroup          |  SQL 그룹 2, SQL 그룹 3     | Array<String>    | 실패 시 자동 롤백된 SQL 그룹 별칭 리스트                                      |
+| isSqlGroupFail          |  false     | boolean    | SQL 그룹 실행 오류 여부  실패: true, 성공: false                                    |
+| rolledBackCount          | 2 | int     | 오류 시 자동 롤백된 SQL 그룹 갯수                                      |
+| rolledBackSqlGroup          |  SQL 그룹 2, SQL 그룹 3     | Array<String>    | 오류 시 자동 롤백된 SQL 그룹 별칭 리스트                                      |
+| succeededSqlGroup          |       | Array    | 성공한 SQL 그룹 리스트                                      |
+| sqlGroupId          |  19283     | String    | 성공한 SQL 그룹 ID                                      |
+| sqlGroupName          |    SQL 그룹 2   | Array    | 성공한 SQL 그룹 별칭                                      |
 
 [성공]
 ```json
@@ -218,12 +221,26 @@
         "docExecStatus": 2,
         "isSqlGroupFail": false,
         "rolledBackCount": 0,
-        "rolledBackSqlGroup": []
+        "rolledBackSqlGroup": [],
+	"succeededSqlGroup": [
+            {
+                "sqlGroupId": "4986",
+                "sqlGroupName": "SQL 그룹 1"
+            },
+            {
+                "sqlGroupId": "4989",
+                "sqlGroupName": "SQL 그룹 2"
+            },
+            {
+                "sqlGroupId": "4992",
+                "sqlGroupName": "SQL 그룹 3"
+            }
+        ]
     }
 }
 ```
 
-[SQL 그룹 실행 실패]
+[SQL 그룹 실행 오류]
 ```json
 {
     "code": 200,
@@ -623,6 +640,9 @@ SQL 그룹의 실행을 반려합니다.
 | code              | 200   | int | 결과 코드                                                                                                                                                         |
 | data              |       | Map | 결과 데이터                                                                                                                                                        |
 | rejectableStatus  | 1     | int | 반려 가능 상태<br>1: 전부 실행전(전체 반려 가능)<br>2: 실행 성공, 실행 전 SQL 그룹만 존재<br>3: 실행 완료(롤백, 커밋, 실패, 반려), 실행 전 SQL 그룹만 존재<br>4: 실행 성공, 실행 완료 SQL 그룹 존재<br>5: 전부 실행 완료(반려 불가능) |
+| sqlGroupStatus  |      | Array | SQL 그룹 반려 가능 상태 리스트(전체 SQL 그룹) |
+| sqlGroupRejectableStatus  |  1    | int | SQL 그룹 반려 가능 상태<br>1: 반려 가능<br>2: 반려 가능(롤백 이후 반려)<br>3:반려 불가능(이미 실행 완료됨) |
+| sqlGroupName  |      | String | SQL 그룹 별칭 |
 
 [성공]
 ```json
@@ -630,11 +650,21 @@ SQL 그룹의 실행을 반려합니다.
     "code": 200,
     "message": "처리되었습니다.",
     "data": {
-        "rejectableStatus": 3
+        "rejectableStatus": 3,
+        "sqlGroupStatus": [
+            {
+                "sqlGroupRejectableStatus": 3,
+                "sqlGroupName": "SQL 그룹 1"
+            },
+            {
+                "sqlGroupRejectableStatus": 1,
+                "sqlGroupName": "SQL 그룹 2"
+            }
+        ]
     }
 }
 ```
-[성공]
+[실패]
 ```json
 {
     "code": 500,
@@ -862,25 +892,28 @@ SQL 그룹의 실행을 반려합니다.
 |-------------|------------|--------|-----------|
 | *docId      | 2024000005 | String | 문서 ID     |
 | *sqlGroupId | 23         | String | SQL 그룹 ID |
+| *reqSize | 5         | int | 요청 건수 |
 
 ```text
-?docId=2024000005&sqlGroupId=23
+?docId=2024000185&sqlGroupId=4631&reqSize=5
 ```
 
 ### Response
 | 항목         | 값(예시)      | 타입            | 설명       |
 |------------|------------|---------------|----------|
 | code       | 200        | int           | 결과 코드    |
+| message    |            | String        | 결과 메시지   |
 | data       |            | Map           | 결과 데이터   |
 | column     |            | Array<String> | 컬럼       |
 | data       |            | Array<Map>    | 데이터      |
-| message    |            | String        | 결과 메시지   |
+| totalCount       |   10         | int    | 전체 건수      |
 
 [성공]
 ```json
 {
     "code": 200,
     "data": {
+	"totalCount" : 10,
         "column": [
             "EMPNO",
             "ENAME",
@@ -943,25 +976,28 @@ SQL 그룹의 실행을 반려합니다.
 |-------------|------------|--------|-----------|
 | *docId      | 2024000005 | String | 문서 ID     |
 | *sqlGroupId | 23         | String | SQL 그룹 ID |
+| *reqSize | 5         | int | 요청 건수 |
 
 ```text
-?docId=2024000005&sqlGroupId=23
+?docId=2024000185&sqlGroupId=4631&reqSize=5
 ```
 
 ### Response
 | 항목         | 값(예시)      | 타입            | 설명       |
 |------------|------------|---------------|----------|
 | code       | 200        | int           | 결과 코드    |
+| message    |            | String        | 결과 메시지   |
 | data       |            | Map           | 결과 데이터   |
 | column     |            | Array<String> | 컬럼       |
 | data       |            | Array<Map>    | 데이터      |
-| message    |            | String        | 결과 메시지   |
+| totalCount       |   10         | int    | 전체 건수      |
 
 [성공]
 ```json
 {
     "code": 200,
     "data": {
+	"totalCount" : 10,
         "column": [
             "EMPNO",
             "ENAME",
