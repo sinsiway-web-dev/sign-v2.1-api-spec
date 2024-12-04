@@ -136,6 +136,7 @@
 | isSqlGroupFail          |  false     | boolean    | SQL 그룹 실행 실패 여부  실패: true, 성공: false                                    |
 | rolledBackCount          | 2 | int     | 실패 시 자동 롤백된 SQL 그룹 갯수                                      |
 | rolledBackSqlGroup          |  SQL 그룹 2, SQL 그룹 3     | Array<String>    | 실패 시 자동 롤백된 SQL 그룹 별칭 리스트                                      |
+| noExecSqlGroupCount          |   5    | int    | 실행 전 SQL 그룹 갯수                                      |
 
 [성공]
 ```json
@@ -469,11 +470,13 @@ SQL 그룹의 실행을 반려합니다.
 |--------------------|-----------------------|---------------|------------------------------------|
 | *docId            | 2024000002 | String        | 문서 번호                              |
 | *orgUid            | user01 | String        | 사용자 ID                              |
+| describe            | 반려합니다. | String        | 반려 시 첨언                              |
 
 ```json
 {
     "docId" : "2024000174",
     "orgUid" : "user01"
+    "describe" : "반려합니다."
 }
 ```
 
@@ -541,7 +544,8 @@ SQL 그룹의 실행을 반려합니다.
 | code           | 200                                                          | int     | 결과 코드                                                                                       |
 | data           |                                                              | Map     | 결과 데이터                                                                                      |
 | docExecStatus  | 3                                                            | String  | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행                                                 |
-| canExecuteAll  | 3                                                            | boolean | 전체 실행 가능 여부<br>true: 전체 실행 가능<br>false: 전체 실행 불가능                                           |
+| canExecuteAll  | true                                                            | boolean | 전체 실행 가능 여부<br>true: 전체 실행 가능<br>false: 전체 실행 불가능                                           |
+| canRejectAll  | true                                                            | boolean | 전체 반려 가능 여부<br>true: 전체 반려 가능<br>false: 전체 반려 불가능                                           |
 | sqlGroup       |                                                              | Array   | SQL 그룹 리스트                                                                                  |
 | sqlGroupId     | 110                                                          | String  | SQL 그룹 ID                                                                                   |
 | sqlGroupName   | SQL 그룹 1                                                     | String  | SQL 그룹 이름                                                                                   |
@@ -555,6 +559,7 @@ SQL 그룹의 실행을 반려합니다.
 | failMessage    | 변경 SQL 오류 : ORA-01861: literal does not match format string  | String  | 실행 실페 메시지                                                                                   |
 | execDate       | 2024/11/12 10:23:22                                          | String  | 실행일                                                                                         |
 | canExecute     | true                                                         | boolean | 실행 가능 여부<br>true: 실행 가능<br>false: 실행 불가능                                                    |
+| canRejcet     | true                                                         | boolean | 반려 가능 여부<br>true: 반려 가능<br>false: 반려 불가능                                                    |
 | isDocLogExist     | true                                                         | boolean | 전체 실행 로그 존재 여부<br>true: 존재함<br>false: 존재하지 않음                                                    |
 
 [성공]
@@ -564,6 +569,8 @@ SQL 그룹의 실행을 반려합니다.
     "data": {
       "docExecStatus": 2,
       "isDocLogExist": true,
+      "canExecuteAll": false,
+      "canRejcetAll": false,
       "sqlGroup": [
         {
           "sqlGroupId": "192",
@@ -576,7 +583,9 @@ SQL 그룹의 실행을 반려합니다.
           "beforeCount": 1,
           "afterCount": 2,
           "failMessage": "",
-          "execDate": ""
+          "execDate": "",
+	  "canExecute": true,
+	  "canReject": true
         },
         {
           "sqlGroupId": "192",
@@ -589,7 +598,9 @@ SQL 그룹의 실행을 반려합니다.
           "beforeCount": 1,
           "afterCount": 2,
           "failMessage": "",
-          "execDate": "2024/11/12 10:23:22"
+          "execDate": "2024/11/12 10:23:22",
+	  "canExecute": false,
+	  "canReject": false
         },
         {
           "sqlGroupId": "192",
@@ -602,7 +613,9 @@ SQL 그룹의 실행을 반려합니다.
           "beforeCount": 1,
           "afterCount": 2,
           "failMessage": "",
-          "execDate": ""
+          "execDate": "",
+	  "canExecute": true,
+	  "canReject": true
         }
       ]
     },
@@ -614,8 +627,13 @@ SQL 그룹의 실행을 반려합니다.
 ```json
 {
     "code": 500,
-    "data": {},
-    "message": "처리에 실패하였습니다."
+    "message": "처리에 실패하였습니다.",
+    "data": {
+        "canRejcetAll": false,
+        "docExecStatus": -1,
+        "canExecuteAll": false,
+        "isDocLogExist": false
+    }
 }
 ```
 
@@ -752,6 +770,7 @@ SQL 그룹의 실행을 반려합니다.
 | agentApproverOrgItemName |                                                             | String  | 대리결재자 조직명                                                                                                                                                                                                           |
 | dataModifyInfo           |                                                             | Map     | 변경 실행 정보                                                                                                                                                                                                            |
 | canExecuteAll            | true                                                        | boolean | 전체 실행 가능 여부<br>true: 전체 실행 가능<br>false: 전체 실행 불가능                                                                                                                                                                   |
+| canRejectAll            | true                                                        | boolean | 전체 반려 가능 여부<br>true: 전체 반려 가능<br>false: 전체 반려 불가능                                                                                                                                                                   |
 | docExecStatus            | 3                                                           | String  | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행                                                                                                                                                                         |
 | isDocLogExist     | true                                                         | boolean | 전체 실행 로그 존재 여부<br>true: 존재함<br>false: 존재하지 않음                                                    |
 | docExecDate              | 2024/11/14 16:47:25                                         | String  | 문서 실행 완료일                                                                                                                                                                                                           |
@@ -768,7 +787,8 @@ SQL 그룹의 실행을 반려합니다.
 | execResultCode           | 1                                                           | int     | SQL 그룹 실행 결과 코드<br>1: 실행 전<br>2: 실행 성공<br>3: 커밋<br>4: 롤백<br>5:실행 실패<br>6: 자동 롤백<br>7: 실행 반려                                                                                                                         |
 | isExecLogExist           | true                                                        | boolean | 실행 로그 존재 여부                                                                                                                                                                                                         |
 | execDate                 | 2024/11/12 10:23:22                                         | String  | 실행일                                                                                                                                                                                                                 |
-| canExecute               | false                                                       | int     | 실행 가능 여부<br>true: 실행 거능<br>false: 실행 불가능                                                                                                                                                                            |
+| canExecute               | false                                                       | boolean     | 실행 가능 여부<br>true: 실행 가능<br>false: 실행 불가능                                                                                                                                                                            |
+| canReject               | false                                                       | boolean     | 반려 가능 여부<br>true: 반려 가능<br>false: 반려 불가능                                                                                                                                                                            |
 | doc                      |                                                             | Map     | 결재 문서 정보                                                                                                                                                                                                            |
 | currentState             | 6                                                           | int     | 결재 문서 상태<br/>0 : 작성중<br/>1 : 요청<br/>2 : 승인<br/>3 : 반려<br/>4 : 후결<br/>5 : 유효 기간 경과<br/>6 : 무효<br/>7 : 권한 부여 승인<br/>8 : 권한 부여 반려<br/>9 : 권한 회수<br/>10 : 실행 완료<br/>11 : 실행 불가<br/>12 : 권한 부여 유효 기간 경과<br/>13 : 결재 진행 중 |
 | currentApproveOrder      | 1                                                           | int     | 결재 중인 결재자 순번                                                                                                                                                                                                        |
@@ -799,7 +819,7 @@ SQL 그룹의 실행을 반려합니다.
                 "approveStatus": 1,
                 "approveDescribe": "",
                 "approveDate": "",
-                "approverName": "결쟈자",
+                "approverName": "결재자",
                 "approverOrgUid": "user01",
                 "approverTitle": "",
                 "approverOrgItemName": "sinsiway",
@@ -827,6 +847,7 @@ SQL 그룹의 실행을 반려합니다.
         "dataModifyInfo": {
             "docExecStatus": 2,
             "canExecuteAll": false,
+            "canRejectAll": false,
             "isDocLogExist": true,
             "docExecDate": "",
             "sqlGroup": [
@@ -843,7 +864,8 @@ SQL 그룹의 실행을 반려합니다.
                     "execResultCode": 7,
                     "isExecLogExist": false,
                     "execDate": "2024/11/30 19:49:21",
-                    "canExecute": false
+                    "canExecute": false,
+                    "canRejcet": false
                 },
                 {
                     "sqlGroupId": "4433",
@@ -858,7 +880,8 @@ SQL 그룹의 실행을 반려합니다.
                     "execResultCode": 1,
                     "isExecLogExist": false,
                     "execDate": "",
-                    "canExecute": true
+                    "canExecute": true,
+                    "canRejcet": true
                 }
             ]
         },
