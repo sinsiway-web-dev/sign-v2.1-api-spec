@@ -555,6 +555,7 @@ SQL 그룹의 실행을 반려합니다.
 | failMessage    | 변경 SQL 오류 : ORA-01861: literal does not match format string  | String  | 실행 실페 메시지                                                                                   |
 | execDate       | 2024/11/12 10:23:22                                          | String  | 실행일                                                                                         |
 | canExecute     | true                                                         | boolean | 실행 가능 여부<br>true: 실행 가능<br>false: 실행 불가능                                                    |
+| isDocLogExist     | true                                                         | boolean | 전체 실행 로그 존재 여부<br>true: 존재함<br>false: 존재하지 않음                                                    |
 
 [성공]
 ```json
@@ -562,6 +563,7 @@ SQL 그룹의 실행을 반려합니다.
     "code": 200,
     "data": {
       "docExecStatus": 2,
+      "isDocLogExist": true,
       "sqlGroup": [
         {
           "sqlGroupId": "192",
@@ -751,6 +753,7 @@ SQL 그룹의 실행을 반려합니다.
 | dataModifyInfo           |                                                             | Map     | 변경 실행 정보                                                                                                                                                                                                            |
 | canExecuteAll            | true                                                        | boolean | 전체 실행 가능 여부<br>true: 전체 실행 가능<br>false: 전체 실행 불가능                                                                                                                                                                   |
 | docExecStatus            | 3                                                           | String  | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행                                                                                                                                                                         |
+| isDocLogExist     | true                                                         | boolean | 전체 실행 로그 존재 여부<br>true: 존재함<br>false: 존재하지 않음                                                    |
 | docExecDate              | 2024/11/14 16:47:25                                         | String  | 문서 실행 완료일                                                                                                                                                                                                           |
 | sqlGroup                 |                                                             | Array   | SQL 그룹                                                                                                                                                                                                              |
 | sqlGroupId               | 132                                                         | String  | SQL 그룹 ID                                                                                                                                                                                                           |
@@ -824,6 +827,7 @@ SQL 그룹의 실행을 반려합니다.
         "dataModifyInfo": {
             "docExecStatus": 2,
             "canExecuteAll": false,
+            "isDocLogExist": true,
             "docExecDate": "",
             "sqlGroup": [
                 {
