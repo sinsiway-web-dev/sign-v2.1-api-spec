@@ -561,6 +561,9 @@ SQL 그룹의 실행을 반려합니다.
 | canExecute     | true                                                         | boolean | 실행 가능 여부<br>true: 실행 가능<br>false: 실행 불가능                                                    |
 | canRejcet     | true                                                         | boolean | 반려 가능 여부<br>true: 반려 가능<br>false: 반려 불가능                                                    |
 | isDocLogExist     | true                                                         | boolean | 전체 실행 로그 존재 여부<br>true: 존재함<br>false: 존재하지 않음                                                    |
+| beforeExecCount     | 2                                                         | int | 실행 전 SQL 그룹 갯수                                                    |
+| execSuccessCount     | 1                                                         | int | 실행 성공 SQL 그룹 갯수                                                    |
+| execCompleteCount     | 2                                                         | int | 실행 완료 SQL 그룹 갯수                                                    |
 
 [성공]
 ```json
@@ -571,6 +574,9 @@ SQL 그룹의 실행을 반려합니다.
       "isDocLogExist": true,
       "canExecuteAll": false,
       "canRejcetAll": false,
+      "beforeExecCount": 1,
+      "execSuccessCount": 0,
+      "execCompleteCount": 2,
       "sqlGroup": [
         {
           "sqlGroupId": "192",
@@ -773,6 +779,9 @@ SQL 그룹의 실행을 반려합니다.
 | canRejectAll            | true                                                        | boolean | 전체 반려 가능 여부<br>true: 전체 반려 가능<br>false: 전체 반려 불가능                                                                                                                                                                   |
 | docExecStatus            | 3                                                           | String  | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행                                                                                                                                                                         |
 | isDocLogExist     | true                                                         | boolean | 전체 실행 로그 존재 여부<br>true: 존재함<br>false: 존재하지 않음                                                    |
+| beforeExecCount     | 2                                                         | int | 실행 전 SQL 그룹 갯수                                                    |
+| execSuccessCount     | 1                                                         | int | 실행 성공 SQL 그룹 갯수                                                    |
+| execCompleteCount     | 2                                                         | int | 실행 완료 SQL 그룹 갯수                                                    |
 | docExecDate              | 2024/11/14 16:47:25                                         | String  | 문서 실행 완료일                                                                                                                                                                                                           |
 | sqlGroup                 |                                                             | Array   | SQL 그룹                                                                                                                                                                                                              |
 | sqlGroupId               | 132                                                         | String  | SQL 그룹 ID                                                                                                                                                                                                           |
@@ -850,6 +859,9 @@ SQL 그룹의 실행을 반려합니다.
             "canRejectAll": false,
             "isDocLogExist": true,
             "docExecDate": "",
+ 	    "beforeExecCount": 1,
+	    "execSuccessCount": 0,
+      	    "execCompleteCount": 2,
             "sqlGroup": [
                 {
                     "sqlGroupId": "4430",
