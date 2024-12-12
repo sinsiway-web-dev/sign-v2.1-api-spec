@@ -92,6 +92,7 @@
 |[근거 문서 별 결재 문서 조회](./doc-create/groundsDoc.md/#근거-문서-별-결재-문서-조회)|/api/sign/doc/dataModify/groundsDoc/doc|GET|근거 문서 선택 목록|
 |[근거 문서 상태 조회 URL](./doc-create/groundsDoc.md/#근거-문서-상태-조회-URL)|/api/sign/doc/dataModify/groundsDoc/status|GET|근거 문서 선택 목록|
 |[근거 문서 실행 가능 여부 확인](./doc-create/groundsDoc.md/#근거-문서-실행-가능-여부-확인)|/api/sign/doc/dataModify/groundsDoc/isModifiable|GET|근거 문서 실행 가능 여부 확인<br/>(* 고객사 제공 근거 문서 상태 확인 API 호출)|
+|[근거 문서 종류 조회](./doc-create/groundsDoc.md#근거-문서-종류-조회)|/api/sign/doc/dataModify/groundsDoc/type|GET|근거 문서 종류 조회|
 ## 승인 요청
 |API|URL|HTTP Method|View|
 |---|---|---|---|
