@@ -134,9 +134,7 @@
 | data          |       | Map    | 결과 데이터                                      |
 | docExecStatus | 3     | String | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행 |
 | isSqlGroupFail          |  false     | boolean    | SQL 그룹 실행 실패 여부  실패: true, 성공: false                                    |
-| rolledBackCount          | 2 | int     | 실패 시 자동 롤백된 SQL 그룹 갯수                                      |
 | rolledBackSqlGroup          |  SQL 그룹 2, SQL 그룹 3     | Array<String>    | 실패 시 자동 롤백된 SQL 그룹 별칭 리스트                                      |
-| noExecSqlGroupCount          |   5    | int    | 실행 전 SQL 그룹 갯수                                      |
 
 [성공]
 ```json
@@ -146,7 +144,6 @@
     "data": {
         "docExecStatus": 2,
         "isSqlGroupFail": false,
-        "rolledBackCount": 0,
         "rolledBackSqlGroup": []
     }
 }
@@ -207,11 +204,7 @@
 | data          |       | Map    | 결과 데이터                                      |
 | docExecStatus | 3     | String | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행 |
 | isSqlGroupFail          |  false     | boolean    | SQL 그룹 실행 오류 여부  실패: true, 성공: false                                    |
-| rolledBackCount          | 2 | int     | 오류 시 자동 롤백된 SQL 그룹 갯수                                      |
 | rolledBackSqlGroup          |  SQL 그룹 2, SQL 그룹 3     | Array<String>    | 오류 시 자동 롤백된 SQL 그룹 별칭 리스트                                      |
-| succeededSqlGroup          |       | Array    | 성공한 SQL 그룹 리스트                                      |
-| sqlGroupId          |  19283     | String    | 성공한 SQL 그룹 ID                                      |
-| sqlGroupName          |    SQL 그룹 2   | Array    | 성공한 SQL 그룹 별칭                                      |
 
 [성공]
 ```json
@@ -221,22 +214,7 @@
     "data": {
         "docExecStatus": 2,
         "isSqlGroupFail": false,
-        "rolledBackCount": 0,
-        "rolledBackSqlGroup": [],
-	"succeededSqlGroup": [
-            {
-                "sqlGroupId": "4986",
-                "sqlGroupName": "SQL 그룹 1"
-            },
-            {
-                "sqlGroupId": "4989",
-                "sqlGroupName": "SQL 그룹 2"
-            },
-            {
-                "sqlGroupId": "4992",
-                "sqlGroupName": "SQL 그룹 3"
-            }
-        ]
+        "rolledBackSqlGroup": []
     }
 }
 ```
@@ -249,7 +227,6 @@
     "data": {
         "docExecStatus": 3,
         "isSqlGroupFail": true,
-        "rolledBackCount": 2,
         "rolledBackSqlGroup": [
             "SQL 그룹 2",
             "SQL 그룹 3"
@@ -420,26 +397,13 @@ SQL 그룹의 실행을 반려합니다.
 | 항목               | 값(예시) | 타입     | 설명                                                                                          |
 |------------------|-------|--------|---------------------------------------------------------------------------------------------|
 | docExecStatus    | 3     | String | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행                                                 |
-| rejectedSqlGroup |       | Array  | 반려된 SQL 그룹 리스트                                                                              |
-| sqlGroupId       | 23    | String | SQL 그룹 ID                                                                                   |
-| execResultCode   | 1     | int    | SQL 그룹 실행 결과 코드<br>1: 실행 전<br>2: 실행 성공<br>3: 커밋<br>4: 롤백<br>5:실행 실패<br>6: 자동 롤백<br>7: 실행 반려 |
 
 [성공]
 ```json
 {
     "code": 200,
     "data": {
-        "docExecStatus": 2,
-        "rejectedSqlGroup" :[
-            {
-                "sqlGroupId" : "123",
-                "execResultCode" : 7
-            },
-            {
-                "sqlGroupId" : "876",
-                "execResultCode" : 7
-            }
-        ]
+        "docExecStatus": 2
     },
     "message": "처리되었습니다."
 }
@@ -484,26 +448,13 @@ SQL 그룹의 실행을 반려합니다.
 | 항목               | 값(예시) | 타입     | 설명                                                                                          |
 |------------------|-------|--------|---------------------------------------------------------------------------------------------|
 | docExecStatus    | 3     | String | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행                                                 |
-| rejectedSqlGroup |       | Array  | 반려된 SQL 그룹 리스트                                                                              |
-| sqlGroupId       | 23    | String | SQL 그룹 ID                                                                                   |
-| execResultCode   | 1     | int    | SQL 그룹 실행 결과 코드<br>1: 실행 전<br>2: 실행 성공<br>3: 커밋<br>4: 롤백<br>5:실행 실패<br>6: 자동 롤백<br>7: 실행 반려 |
 
 [성공]
 ```json
 {
     "code": 200,
     "data": {
-        "docExecStatus": 2,
-        "rejectedSqlGroup" :[
-            {
-                "sqlGroupId" : "123",
-                "execResultCode" : 7
-            },
-            {
-                "sqlGroupId" : "876",
-                "execResultCode" : 7
-            }
-        ]
+        "docExecStatus": 2
     },
     "message": "처리되었습니다."
 }
@@ -782,6 +733,8 @@ SQL 그룹의 실행을 반려합니다.
 | beforeExecCount     | 2                                                         | int | 실행 전 SQL 그룹 갯수                                                    |
 | execSuccessCount     | 1                                                         | int | 실행 성공 SQL 그룹 갯수                                                    |
 | execCompleteCount     | 2                                                         | int | 실행 완료 SQL 그룹 갯수                                                    |
+| reExecMaxAllowCount     | 3                                                         | int | 재실행 허용 가능 최대 횟수                                                    |
+| reExecEnabled     | true                                                         | int | 재실행 허용 여부<br>true: 재실행 허용<br>false: 재실행 허용 안함                                                    |
 | docExecDate              | 2024/11/14 16:47:25                                         | String  | 문서 실행 완료일                                                                                                                                                                                                           |
 | sqlGroup                 |                                                             | Array   | SQL 그룹                                                                                                                                                                                                              |
 | sqlGroupId               | 132                                                         | String  | SQL 그룹 ID                                                                                                                                                                                                           |
@@ -792,12 +745,13 @@ SQL 그룹의 실행을 반려합니다.
 | beforeSql                | select * from emp_sign where empno=1001                     | String  | 변경 전 검증SQL                                                                                                                                                                                                          |
 | afterSql                 | select * from emp_sign where empno=1002                     | String  | 변경 후 검증SQL                                                                                                                                                                                                          |
 | modifySql                | update emp_sign set empno=1002 where empno=1001             | String  | 변경 SQL                                                                                                                                                                                                              |
-| *sqlType                 | 1                                                           | int     | 변경 SQL종류<br/>1 : 기본SQL<br/>2 : PL/SQL                                                                                                                                                                               |
+| sqlType                 | 1                                                           | int     | 변경 SQL종류<br/>1 : 기본SQL<br/>2 : PL/SQL                                                                                                                                                                               |
 | execResultCode           | 1                                                           | int     | SQL 그룹 실행 결과 코드<br>1: 실행 전<br>2: 실행 성공<br>3: 커밋<br>4: 롤백<br>5:실행 실패<br>6: 자동 롤백<br>7: 실행 반려                                                                                                                         |
 | isExecLogExist           | true                                                        | boolean | 실행 로그 존재 여부                                                                                                                                                                                                         |
 | execDate                 | 2024/11/12 10:23:22                                         | String  | 실행일                                                                                                                                                                                                                 |
 | canExecute               | false                                                       | boolean     | 실행 가능 여부<br>true: 실행 가능<br>false: 실행 불가능                                                                                                                                                                            |
 | canReject               | false                                                       | boolean     | 반려 가능 여부<br>true: 반려 가능<br>false: 반려 불가능                                                                                                                                                                            |
+| remainingExecCount               | 3                                                       | int     | 남은 실행 가능 횟수                                                                                                                                                                            |
 | doc                      |                                                             | Map     | 결재 문서 정보                                                                                                                                                                                                            |
 | currentState             | 6                                                           | int     | 결재 문서 상태<br/>0 : 작성중<br/>1 : 요청<br/>2 : 승인<br/>3 : 반려<br/>4 : 후결<br/>5 : 유효 기간 경과<br/>6 : 무효<br/>7 : 권한 부여 승인<br/>8 : 권한 부여 반려<br/>9 : 권한 회수<br/>10 : 실행 완료<br/>11 : 실행 불가<br/>12 : 권한 부여 유효 기간 경과<br/>13 : 결재 진행 중 |
 | currentApproveOrder      | 1                                                           | int     | 결재 중인 결재자 순번                                                                                                                                                                                                        |
@@ -862,6 +816,8 @@ SQL 그룹의 실행을 반려합니다.
  	    "beforeExecCount": 1,
 	    "execSuccessCount": 0,
       	    "execCompleteCount": 2,
+            "reExecMaxAllowCount": 3,
+            "reExecEnabled": true
             "sqlGroup": [
                 {
                     "sqlGroupId": "4430",
@@ -877,7 +833,8 @@ SQL 그룹의 실행을 반려합니다.
                     "isExecLogExist": false,
                     "execDate": "2024/11/30 19:49:21",
                     "canExecute": false,
-                    "canRejcet": false
+                    "canReject": false,
+                    "remainingExecCount": 3
                 },
                 {
                     "sqlGroupId": "4433",
@@ -893,7 +850,8 @@ SQL 그룹의 실행을 반려합니다.
                     "isExecLogExist": false,
                     "execDate": "",
                     "canExecute": true,
-                    "canRejcet": true
+                    "canRejcet": true,
+                    "remainingExecCount": 3
                 }
             ]
         },
