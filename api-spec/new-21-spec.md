@@ -639,7 +639,7 @@ SQL 그룹의 실행을 반려합니다.
 ### URL
 * /api/sign/doc/dataModify/sql-group/reject-status
 * post
-* application/x-www-form-urlencoded;charset=UTF-8
+* application/json;charset=UTF-8
 *
 ### Request
 | 항목                 | 값(예시)        | 타입     | 설명                             |
@@ -1127,6 +1127,56 @@ SQL 그룹의 실행을 반려합니다.
     "code": 500,
     "data": {},
     "message": "처리에 실패하였습니다."
+}
+```
+
+## 변경 전 데이터 건수 SQL로 조회
+문서 생성 전 SELECT 문을 입력받아 건수를 응답합니다.
+### URL
+* /api/sign/doc/dataModify/sql-group/before-count
+* POST
+* application/json;charset=UTF-8
+
+### Request
+| 항목          | 값(예시)      | 타입     | 설명        |
+|-------------|------------|--------|-----------|
+| *targetId      | 20 | String | 변경 대상 ID     |
+| *sql | SELECT * FROM EMP         | String | 변경 전 SQL |
+
+```json
+{
+    "targetId":"20",
+    "sql":"SELECT * FROM EMP"
+}
+```
+
+### Response
+| 항목          | 값(예시)      | 타입     | 설명             |
+|-------------|------------|--------|----------------|
+| code        | 200        | int    | 결과 코드          |
+| data        |            | Map    | 결과 데이터         |
+| message     |            | String | 결과 메시지         |
+| beforeCount |            | int    | 변경 전 데이터 예상 건수 |
+
+[성공]
+```json
+{
+    "code": 200,
+    "message": "처리되었습니다.",
+    "data": {
+        "beforeCount": 11
+    }
+}
+```
+
+[실패]
+```json
+{
+    "code": 500,
+    "message": "변경 전 건수를 조회하지 못했습니다.\n변경 전 SQL 오류 : ORA-00942: table or view does not exist\n",
+    "data": {
+        "beforeCount": 0
+    }
 }
 ```
 
