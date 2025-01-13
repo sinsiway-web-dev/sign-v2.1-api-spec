@@ -134,7 +134,12 @@
 | data          |       | Map    | 결과 데이터                                      |
 | docExecStatus | 3     | String | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행 |
 | isSqlGroupFail          |  false     | boolean    | SQL 그룹 실행 실패 여부  실패: true, 성공: false                                    |
-| rolledBackSqlGroup          |  SQL 그룹 2, SQL 그룹 3     | Array<String>    | 실패 시 자동 롤백된 SQL 그룹 별칭 리스트                                      |
+| rolledBackSqlGroup          |       | Array    | 실패 시 자동 롤백된 SQL 그룹 리스트                                      |
+| sqlGroupId          |    10023   | String    | 실패 시 자동 롤백된 SQL 그룹 ID                                      |
+| sqlGroupName          |    SQL 그룹 1   | String    | 실패 시 자동 롤백된 SQL 그룹 이름                                      |
+| succeededSqlGroup          |       | Array    | 실행 성공 SQL 그룹 리스트                                      |
+| sqlGroupId          |    10023   | String    | 실행 성공 SQL 그룹 ID                                      |
+| sqlGroupName          |    SQL 그룹 1   | String    | 실행 성공 SQL 그룹 이름                                      |
 
 [성공]
 ```json
@@ -143,6 +148,12 @@
     "message": "처리되었습니다.",
     "data": {
         "docExecStatus": 2,
+        "succeededSqlGroup": [
+            {
+                "sqlGroupId": "152",
+                "sqlGroupName": "SQL 그룹 3"
+            }
+        ],
         "isSqlGroupFail": false,
         "rolledBackSqlGroup": []
     }
@@ -155,12 +166,14 @@
     "code": 200,
     "message": "처리되었습니다.",
     "data": {
-        "docExecStatus": 3,
+        "docExecStatus": 2,
+        "succeededSqlGroup": [],
         "isSqlGroupFail": true,
-        "rolledBackCount": 2,
         "rolledBackSqlGroup": [
-            "SQL 그룹 2",
-            "SQL 그룹 3"
+            {
+                "sqlGroupId": "135",
+                "sqlGroupName": "SQL 그룹 1"
+            }
         ]
     }
 }
@@ -203,8 +216,13 @@
 | code          | 200   | int    | 결과 코드                                       |
 | data          |       | Map    | 결과 데이터                                      |
 | docExecStatus | 3     | String | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행 |
-| isSqlGroupFail          |  false     | boolean    | SQL 그룹 실행 오류 여부  실패: true, 성공: false                                    |
-| rolledBackSqlGroup          |  SQL 그룹 2, SQL 그룹 3     | Array<String>    | 오류 시 자동 롤백된 SQL 그룹 별칭 리스트                                      |
+| isSqlGroupFail          |  false     | boolean    | SQL 그룹 실행 실패 여부  실패: true, 성공: false                                    |
+| rolledBackSqlGroup          |       | Array    | 실패 시 자동 롤백된 SQL 그룹 리스트                                      |
+| sqlGroupId          |    10023   | String    | 실패 시 자동 롤백된 SQL 그룹 ID                                      |
+| sqlGroupName          |    SQL 그룹 1   | String    | 실패 시 자동 롤백된 SQL 그룹 이름                                      |
+| succeededSqlGroup          |       | Array    | 실행 성공 SQL 그룹 리스트                                      |
+| sqlGroupId          |    10023   | String    | 실행 성공 SQL 그룹 ID                                      |
+| sqlGroupName          |    SQL 그룹 1   | String    | 실행 성공 SQL 그룹 이름                                      |
 
 [성공]
 ```json
@@ -213,23 +231,32 @@
     "message": "처리되었습니다.",
     "data": {
         "docExecStatus": 2,
+        "succeededSqlGroup": [
+            {
+                "sqlGroupId": "152",
+                "sqlGroupName": "SQL 그룹 3"
+            }
+        ],
         "isSqlGroupFail": false,
         "rolledBackSqlGroup": []
     }
 }
 ```
 
-[SQL 그룹 실행 오류]
+[SQL 그룹 실행 실패]
 ```json
 {
     "code": 200,
     "message": "처리되었습니다.",
     "data": {
-        "docExecStatus": 3,
+        "docExecStatus": 2,
+        "succeededSqlGroup": [],
         "isSqlGroupFail": true,
         "rolledBackSqlGroup": [
-            "SQL 그룹 2",
-            "SQL 그룹 3"
+            {
+                "sqlGroupId": "135",
+                "sqlGroupName": "SQL 그룹 1"
+            }
         ]
     }
 }
@@ -537,6 +564,12 @@ SQL 그룹의 실행을 반려합니다.
 | docExecStatus  | 3                                                            | String  | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행                                                 |
 | canExecuteAll  | true                                                            | boolean | 전체 실행 가능 여부<br>true: 전체 실행 가능<br>false: 전체 실행 불가능                                           |
 | canRejectAll  | true                                                            | boolean | 전체 반려 가능 여부<br>true: 전체 반려 가능<br>false: 전체 반려 불가능                                           |
+| isDocLogExist     | true                                                         | boolean | 전체 실행 로그 존재 여부<br>true: 존재함<br>false: 존재하지 않음                                                    |
+| beforeExecCount     | 2                                                         | int | 실행 전 SQL 그룹 갯수                                                    |
+| execSuccessCount     | 1                                                         | int | 실행 성공 SQL 그룹 갯수                                                    |
+| execCompleteCount     | 2                                                         | int | 실행 완료 SQL 그룹 갯수                                                    |
+| isReExecEnabled     | true                                                         | boolean | 재실행 설정 여부                                                    |
+| reExecMaxAllowCount     | 3                                                         | int | 최대 실행 하용 횟수                                                    |
 | sqlGroup       |                                                              | Array   | SQL 그룹 리스트                                                                                  |
 | sqlGroupId     | 110                                                          | String  | SQL 그룹 ID                                                                                   |
 | sqlGroupName   | SQL 그룹 1                                                     | String  | SQL 그룹 이름                                                                                   |
@@ -551,10 +584,7 @@ SQL 그룹의 실행을 반려합니다.
 | execDate       | 2024/11/12 10:23:22                                          | String  | 실행일                                                                                         |
 | canExecute     | true                                                         | boolean | 실행 가능 여부<br>true: 실행 가능<br>false: 실행 불가능                                                    |
 | canRejcet     | true                                                         | boolean | 반려 가능 여부<br>true: 반려 가능<br>false: 반려 불가능                                                    |
-| isDocLogExist     | true                                                         | boolean | 전체 실행 로그 존재 여부<br>true: 존재함<br>false: 존재하지 않음                                                    |
-| beforeExecCount     | 2                                                         | int | 실행 전 SQL 그룹 갯수                                                    |
-| execSuccessCount     | 1                                                         | int | 실행 성공 SQL 그룹 갯수                                                    |
-| execCompleteCount     | 2                                                         | int | 실행 완료 SQL 그룹 갯수                                                    |
+| remainingExecCount    | 2  | int  | 남은 실행 횟수                                                                                   |
 
 [성공]
 ```json
@@ -568,6 +598,8 @@ SQL 그룹의 실행을 반려합니다.
       "beforeExecCount": 1,
       "execSuccessCount": 0,
       "execCompleteCount": 2,
+      "reExecMaxAllowCount": 3,
+      "isReExecEnabled": true,
       "sqlGroup": [
         {
           "sqlGroupId": "192",
@@ -582,7 +614,8 @@ SQL 그룹의 실행을 반려합니다.
           "failMessage": "",
           "execDate": "",
 	  "canExecute": true,
-	  "canReject": true
+	  "canReject": true,
+	  "remainingExecCount": 3
         },
         {
           "sqlGroupId": "192",
@@ -597,7 +630,8 @@ SQL 그룹의 실행을 반려합니다.
           "failMessage": "",
           "execDate": "2024/11/12 10:23:22",
 	  "canExecute": false,
-	  "canReject": false
+	  "canReject": false,
+	  "remainingExecCount": 3
         },
         {
           "sqlGroupId": "192",
@@ -612,7 +646,8 @@ SQL 그룹의 실행을 반려합니다.
           "failMessage": "",
           "execDate": "",
 	  "canExecute": true,
-	  "canReject": true
+	  "canReject": true,
+	  "remainingExecCount": 3
         }
       ]
     },
@@ -774,7 +809,7 @@ SQL 그룹의 실행을 반려합니다.
 | execSuccessCount     | 1                                                         | int | 실행 성공 SQL 그룹 갯수                                                    |
 | execCompleteCount     | 2                                                         | int | 실행 완료 SQL 그룹 갯수                                                    |
 | reExecMaxAllowCount     | 3                                                         | int | 재실행 허용 가능 최대 횟수                                                    |
-| reExecEnabled     | true                                                         | int | 재실행 허용 여부<br>true: 재실행 허용<br>false: 재실행 허용 안함                                                    |
+| isReExecEnabled     | true                                                         | int | 재실행 설정 여부<br>true: 재실행 설정<br>false: 재실행 설정 안함                                                    |
 | docExecDate              | 2024/11/14 16:47:25                                         | String  | 문서 실행 완료일                                                                                                                                                                                                           |
 | sqlGroup                 |                                                             | Array   | SQL 그룹                                                                                                                                                                                                              |
 | sqlGroupId               | 132                                                         | String  | SQL 그룹 ID                                                                                                                                                                                                           |
@@ -857,7 +892,7 @@ SQL 그룹의 실행을 반려합니다.
 	    "execSuccessCount": 0,
       	    "execCompleteCount": 2,
             "reExecMaxAllowCount": 3,
-            "reExecEnabled": true
+            "isReExecEnabled": true
             "sqlGroup": [
                 {
                     "sqlGroupId": "4430",
@@ -902,8 +937,8 @@ SQL 그룹의 실행을 반려합니다.
             "groundsDocId": "",
             "createDate": "2024/11/30 19:52:41",
             "aprvLimit": "2024/12/01",
-            "requestOrgUid": "cgpark",
-            "requestName": "박찬규",
+            "requestOrgUid": "user100",
+            "requestName": "기안자",
             "docTitle": "test",
             "requestDescribe": "DB데이터변경사유"
         },
@@ -944,12 +979,14 @@ SQL 그룹의 실행을 반려합니다.
 | column     |            | Array<String> | 컬럼       |
 | data       |            | Array<Map>    | 데이터      |
 | totalCount       |   10         | int    | 전체 건수      |
+| verifySqlSplit       |   true         | boolean    | 검증 SQL 분리 여부      |
 
 [성공]
 ```json
 {
     "code": 200,
     "data": {
+        "verifySqlSplit": false,
 	"totalCount" : 10,
         "column": [
             "EMPNO",
