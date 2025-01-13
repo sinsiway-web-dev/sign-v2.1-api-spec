@@ -573,7 +573,7 @@ SQL 그룹의 실행을 반려합니다.
 | sqlGroup       |                                                              | Array   | SQL 그룹 리스트                                                                                  |
 | sqlGroupId     | 110                                                          | String  | SQL 그룹 ID                                                                                   |
 | sqlGroupName   | SQL 그룹 1                                                     | String  | SQL 그룹 이름                                                                                   |
-| execResultCode | 1                                                            | int     | SQL 그룹 실행 결과 코드<br>1: 실행 전<br>2: 실행 성공<br>3: 커밋<br>4: 롤백<br>5:실행 실패<br>6: 자동 롤백<br>7: 실행 반려 |
+| execResultCode           | 1                                                           | int     | SQL 그룹 실행 결과 코드<br>1: 실행 전<br>2: 실행 중<br>3: 커밋<br>4: 롤백<br>5:실행 에러<br>6: 자동 롤백<br>7: 실행 반려<br>10: 최대 검증 데이터 건수 초과|
 | modifySql      | update emp_sign set empno=1002 where empno=1001              | String  | 변경 SQL                                                                                      |
 | beforeSql      | select * from emp_sign where empno=1001                      | String  | 변경 전 검증SQL                                                                                  |
 | afterSql       | select * from emp_sign where empno=1002                      | String  | 변경 후 검증SQL                                                                                  |
@@ -821,7 +821,7 @@ SQL 그룹의 실행을 반려합니다.
 | afterSql                 | select * from emp_sign where empno=1002                     | String  | 변경 후 검증SQL                                                                                                                                                                                                          |
 | modifySql                | update emp_sign set empno=1002 where empno=1001             | String  | 변경 SQL                                                                                                                                                                                                              |
 | sqlType                 | 1                                                           | int     | 변경 SQL종류<br/>1 : 기본SQL<br/>2 : PL/SQL                                                                                                                                                                               |
-| execResultCode           | 1                                                           | int     | SQL 그룹 실행 결과 코드<br>1: 실행 전<br>2: 실행 성공<br>3: 커밋<br>4: 롤백<br>5:실행 실패<br>6: 자동 롤백<br>7: 실행 반려                                                                                                                         |
+| execResultCode           | 1                                                           | int     | SQL 그룹 실행 결과 코드<br>1: 실행 전<br>2: 실행 중<br>3: 커밋<br>4: 롤백<br>5:실행 에러<br>6: 자동 롤백<br>7: 실행 반려<br>10: 최대 검증 데이터 건수 초과|
 | isExecLogExist           | true                                                        | boolean | 실행 로그 존재 여부                                                                                                                                                                                                         |
 | execDate                 | 2024/11/12 10:23:22                                         | String  | 실행일                                                                                                                                                                                                                 |
 | canExecute               | false                                                       | boolean     | 실행 가능 여부<br>true: 실행 가능<br>false: 실행 불가능                                                                                                                                                                            |
@@ -979,7 +979,7 @@ SQL 그룹의 실행을 반려합니다.
 | column     |            | Array<String> | 컬럼       |
 | data       |            | Array<Map>    | 데이터      |
 | totalCount       |   10         | int    | 전체 건수      |
-| verifySqlSplit       |   true         | boolean    | 검증 SQL 분리 여부      |
+| compareVarifyDataEnabled       |   true         | boolean    | 검증 데이터 비교 기능 ON/OFF 여부<br/> true: ON<br/> false: OFF      |
 
 [성공]
 ```json
