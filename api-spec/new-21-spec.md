@@ -565,7 +565,7 @@ SQL 그룹의 실행을 반려합니다.
 | canExecuteAll  | true                                                            | boolean | 전체 실행 가능 여부<br>true: 전체 실행 가능<br>false: 전체 실행 불가능                                           |
 | canRejectAll  | true                                                            | boolean | 전체 반려 가능 여부<br>true: 전체 반려 가능<br>false: 전체 반려 불가능                                           |
 | isDocLogExist     | true                                                         | boolean | 전체 실행 로그 존재 여부<br>true: 존재함<br>false: 존재하지 않음                                                    |
-| beforeExecCount     | 2                                                         | int | 실행 전 SQL 그룹 갯수                                                    |
+| executableCount     | 2                                                         | int | 실행 가능 SQL 그룹 갯수                                                    |
 | execSuccessCount     | 1                                                         | int | 실행 성공 SQL 그룹 갯수                                                    |
 | execCompleteCount     | 2                                                         | int | 실행 완료 SQL 그룹 갯수                                                    |
 | isReExecEnabled     | true                                                         | boolean | 재실행 설정 여부                                                    |
@@ -595,7 +595,7 @@ SQL 그룹의 실행을 반려합니다.
       "isDocLogExist": true,
       "canExecuteAll": false,
       "canRejcetAll": false,
-      "beforeExecCount": 1,
+      "executableCount": 1,
       "execSuccessCount": 0,
       "execCompleteCount": 2,
       "reExecMaxAllowCount": 3,
@@ -805,7 +805,7 @@ SQL 그룹의 실행을 반려합니다.
 | canRejectAll            | true                                                        | boolean | 전체 반려 가능 여부<br>true: 전체 반려 가능<br>false: 전체 반려 불가능                                                                                                                                                                   |
 | docExecStatus            | 3                                                           | String  | 문서 실행 상태<br>1: 실행 전<br>2: 부분 실행<br>3: 모두 실행                                                                                                                                                                         |
 | isDocLogExist     | true                                                         | boolean | 전체 실행 로그 존재 여부<br>true: 존재함<br>false: 존재하지 않음                                                    |
-| beforeExecCount     | 2                                                         | int | 실행 전 SQL 그룹 갯수                                                    |
+| executableCount     | 2                                                         | int | 실행 가능 SQL 그룹 갯수                                                    |
 | execSuccessCount     | 1                                                         | int | 실행 성공 SQL 그룹 갯수                                                    |
 | execCompleteCount     | 2                                                         | int | 실행 완료 SQL 그룹 갯수                                                    |
 | reExecMaxAllowCount     | 3                                                         | int | 재실행 허용 가능 최대 횟수                                                    |
@@ -888,7 +888,7 @@ SQL 그룹의 실행을 반려합니다.
             "canRejectAll": false,
             "isDocLogExist": true,
             "docExecDate": "",
- 	    "beforeExecCount": 1,
+ 	    "executableCount": 1,
 	    "execSuccessCount": 0,
       	    "execCompleteCount": 2,
             "reExecMaxAllowCount": 3,
