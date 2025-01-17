@@ -986,7 +986,7 @@ SQL 그룹의 실행을 반려합니다.
 {
     "code": 200,
     "data": {
-        "verifySqlSplit": false,
+	"compareVarifyDataEnabled" : true,
 	"totalCount" : 10,
         "column": [
             "EMPNO",
@@ -1065,12 +1065,14 @@ SQL 그룹의 실행을 반려합니다.
 | column     |            | Array<String> | 컬럼       |
 | data       |            | Array<Map>    | 데이터      |
 | totalCount       |   10         | int    | 전체 건수      |
+| compareVarifyDataEnabled       |   true         | boolean    | 검증 데이터 비교 기능 ON/OFF 여부<br/> true: ON<br/> false: OFF      |
 
 [성공]
 ```json
 {
     "code": 200,
     "data": {
+	"compareVarifyDataEnabled" : true,
 	"totalCount" : 10,
         "column": [
             "EMPNO",
