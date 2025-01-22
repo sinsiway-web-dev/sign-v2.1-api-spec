@@ -1,7 +1,7 @@
 # SQL 실행 이력 조회
 변경 대상에게 실행된 SQL 이력을 조회합니다.
 ## URL
-* /api/sign/history/execSql
+* /api/sign/find/history/execSql
 * POST
 * application/json;charset=UTF-8
 ## Request
@@ -14,17 +14,17 @@
 |requestName|홍길동|String|기안자 이름|
 |execName|김관리|String|실행자 이름|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
-|result|1|int|결과 </br>1: 성공</br>2: 실패|
+|execResult|1|int|실행 결과 </br>1: 성공</br>2: 실패|
 ```
 {
   "startDate": "1736920800",
   "endDate": "1737526473",
   "docId": "2025000013",
-  "docTitle": "데이터 변경 요청서 1",
+  "docTitle": "요청서1",
   "requestName": "홍길동",
   "execName": "김관리",
   "dataModifyTargetName": "PROD01",
-  "result": 1
+  "execResult": 1
 }
 ```
 ## Response
@@ -39,7 +39,7 @@
 |execDate|2025/04/28 13:30:04|String|실행일|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 |sql|UPDATE EMP SET EMPNO = 1001 WHERE EMP_ID = 'user01'|String|SQL|
-|result|1|int|결과 </br>1: 성공</br>2: 실패|
+|execResult|1|int|결과 </br>1: 성공</br>2: 실패|
 
 [성공]
 ```json
@@ -56,7 +56,7 @@
             "execDate":"2025/04/28 13:30:04",
             "dataModifyTargetName":"PROD01",
             "sql":"UPDATE EMP SET EMPNO = 1001 WHERE EMP_ID = 'user01'",
-            "result":1
+            "execResult":1
           },
           {
             "docId":"2025000013",
@@ -67,7 +67,7 @@
             "execDate":"2025/04/28 13:30:04",
             "dataModifyTargetName":"PROD01",
             "sql":"SELECT * from EMP WHERE EMPNO = 1001",
-            "result":1
+            "execResult":1
           }
         ]
     },
