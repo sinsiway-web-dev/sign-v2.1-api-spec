@@ -34,7 +34,7 @@
 |docId|2025000013|String|문서 번호|
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
-|createDate|2025/04/28 11:30:04|String|기안일|
+|startDate|2025/04/28 11:30:04|String|기안일|
 |execName|김관리|String|실행자 이름|
 |execDate|2025/04/28 13:30:04|String|실행일|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
@@ -52,7 +52,7 @@
             "docId":"2025000013",
             "docTitle":"데이터 변경 요청서 1",
             "requestName":"홍길동",
-            "createDate":"2025/04/28 11:30:04",
+            "startDate":"2025/04/28 11:30:04",
             "execName":"김관리",
             "execDate":"2025/04/28 13:30:04",
             "dataModifyTargetName":"PROD01",
@@ -64,7 +64,7 @@
             "docId":"2025000013",
             "docTitle":"데이터 변경 요청서 2",
             "requestName":"홍길동",
-            "createDate":"2025/04/28 11:30:04",
+            "startDate":"2025/04/28 11:30:04",
             "execName":"김관리",
             "execDate":"2025/04/28 13:30:04",
             "dataModifyTargetName":"PROD01",
