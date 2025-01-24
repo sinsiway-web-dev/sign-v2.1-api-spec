@@ -40,6 +40,7 @@
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 |sql|UPDATE EMP SET EMPNO = 1001 WHERE EMP_ID = 'user01'|String|SQL|
 |execResult|1|int|결과 </br>1: 성공</br>2: 실패|
+|message|ORA-00904: "EMPNDDO": invalid identifier|String|메시지|
 
 [성공]
 ```json
@@ -56,7 +57,8 @@
             "execDate":"2025/04/28 13:30:04",
             "dataModifyTargetName":"PROD01",
             "sql":"UPDATE EMP SET EMPNO = 1001 WHERE EMP_ID = 'user01'",
-            "execResult":1
+            "execResult":1,
+            "message":""
           },
           {
             "docId":"2025000013",
@@ -67,7 +69,8 @@
             "execDate":"2025/04/28 13:30:04",
             "dataModifyTargetName":"PROD01",
             "sql":"SELECT * from EMP WHERE EMPNO = 1001",
-            "execResult":1
+            "execResult":1,
+            "message":""
           }
         ]
     },
