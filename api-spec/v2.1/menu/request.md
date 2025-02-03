@@ -9,10 +9,26 @@
 |---|---|---|---|
 |*startDate|1736920800|int|검색 시작일(기안일 기준)|
 |*endDate|1737526473|int|검색 종료일(기안일 기준)|
+|docId|2025000013|String|문서 번호|
+|docTitle|데이터 변경 요청서 1 |String|문서 제목|
+|requestName|홍길동|String|기안자 이름|
+|approverName|김관리|String|현재 결재자 이름|
+|aprvLimitStart|1736920800|int|검색 시작일(결재 기한)|
+|aprvLimitEnd|1737526473|int|검색 종료일(결재 기한)|
+|dataModifyTargetName|PROD01|String|변경 대상 이름|
+|execStatus|1|int|실행 상태 </br>0: 전체</br>1: 실행 전</br>2: 실행 중|
 ```
 {
   "startDate": "1736920800",
-  "endDate": "1737526473"
+  "endDate": "1737526473",
+  "docId": "2025000013",
+  "docTitle": "데이터 변경 요청서 1",
+  "requestName": "홍길동",
+  "approverName": "김관리",
+  "aprvLimitStart": 1737526473
+  "aprvLimitEnd": 1737526473,
+  "dataModifyTargetName": "PROD01",
+  "execStatus": "0"
 }
 ```
 ## Response
