@@ -101,7 +101,7 @@
 # 기안자 - 완료 문서 조회
 기안자의 기안 문서 중 결재 완료(승인 및 실행 완료 또는 실행 반려, 결재 반려) 되어 DB 데이터 변경 건이 없는 문서를 조회합니다.
 ## URL
-* /api/sign/find/request/doc/dataModify/compleat
+* /api/sign/find/request/doc/dataModify/complete
 * POST
 * application/json;charset=UTF-8
 ## Request
