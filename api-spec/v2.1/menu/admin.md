@@ -1,9 +1,9 @@
 # SQL 실행 이력 조회
 변경 대상에게 실행된 SQL 이력을 조회합니다.
 ## URL
-* /api/sign/find/history/execSql
-* POST
-* application/json;charset=UTF-8
+* /api/sign/admin/history/execSql
+* GET
+* application/x-www-form-urlencoded; charset=UTF-8
 ## Request
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
@@ -15,17 +15,8 @@
 |execName|김관리|String|실행자 이름|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 |execResult|1|int|실행 결과 </br>1: 성공</br>2: 실패|
-```
-{
-  "startDate": "1736920800",
-  "endDate": "1737526473",
-  "docId": "2025000013",
-  "docTitle": "요청서1",
-  "requestName": "홍길동",
-  "execName": "김관리",
-  "dataModifyTargetName": "PROD01",
-  "execResult": 1
-}
+```text
+?startDate=1736920800&endDate=1737526473&docId=2025000013&docTitle=요청서1&requestName=홍길동&execName=김관리&dataModifyTargetName=PROD01&execResult=1
 ```
 ## Response
 |항목|값(예시)|타입|설명|
