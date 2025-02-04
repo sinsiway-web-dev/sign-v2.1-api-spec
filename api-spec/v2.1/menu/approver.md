@@ -188,7 +188,7 @@
 }
 ```
 
-# 결재자 - 완 문서 조회
+# 결재자 - 완료 문서 조회
 결재자의 처리해야 할 문서 중 결재를 모두 완료한 문서를 조회합니다.
 ## URL
 * /api/sign/find/approver/doc/dataModify/complete
