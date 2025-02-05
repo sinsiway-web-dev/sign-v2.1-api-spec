@@ -20,7 +20,7 @@
 |endDateStart|1736920800|int|검색 시작일(결재 완료일 기준)|
 |endDateEnd|1737526473|int|검색 종료일(결재 완료일 기준)|
 |approvalState|1|int|결재 상태 </br>0: 전체</br>1: 진행 중</br>2: 승인</br>3: 반려|
-|execResult|1|int|실행 결과 </br>0: 전체</br>1: 실행 전</br>2: 성공</br>3: 실패|
+|execResult|1|int|실행 결과 </br>0: 전체</br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 ```text
 ?startDate=1736920800&endDate=1737526473&docId=2025000013&docTitle=요청서1&requestName=홍길동&apvLimitStart=1736920800&apvLimitEnd=1737526473&approverName=결재자&rejectApproverName=반려자&execName=실행자&endDateStart=1737526473&endDateEnd=1737526473&approvalState=1&execResult=1&dataModifyTargetName=PROD01
@@ -39,7 +39,7 @@
 |execName|실행자|String|실행자 이름|
 |endDate|2025/04/28 13:30:04|String|결재 완료일|
 |approvalState|1|int|결재 상태 </br>1: 진행 중</br>2: 승인</br>3: 반려|
-|execResult|1|int|실행 결과 </br>1: 실행 전</br>2: 성공</br>3: 실패|
+|execResult|1|int|실행 결과 </br>1: 실행 전2: 실행 중</br>3: 실행 완료|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 
 [성공]
