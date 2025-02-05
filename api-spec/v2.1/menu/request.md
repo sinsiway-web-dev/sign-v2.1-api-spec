@@ -90,9 +90,9 @@
 # 기안자 - 완료 문서 조회
 기안자의 기안 문서 중 결재 완료(승인 및 실행 완료 또는 실행 반려, 결재 반려) 되어 DB 데이터 변경 건이 없는 문서를 조회합니다.
 ## URL
-* /api/sign/find/request/doc/dataModify/complete
-* POST
-* application/json;charset=UTF-8
+* /api/sign/request/doc/dataModify/complete
+* GET
+* application/x-www-form-urlencoded;charset=UTF-8
 ## Request
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
@@ -107,18 +107,7 @@
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 |approvalState|1|int|결재 상태</br>0: 전체</br>1: 승인</br>2: 반려|
 ```
-{
-  "startDate": "1736920800",
-  "endDate": "1737526473",
-  "docId": "2025000013",
-  "docTitle": "데이터 변경 요청서 1",
-  "requestName": "홍길동",
-  "aprvEndStart": 1736920800,
-  "aprvEndEnd": 1737526473,
-  "rejectApproverName": "김관리",
-  "dataModifyTargetName": "PROD01",
-  "approvalState": "0"
-}
+?startDate=1736920800&endDate=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&aprvEndStart=1736920800&aprvEndEnd=1737526473&rejectApproverName=김관리&dataModifyTargetName=PROD01&approvalState=0
 ```
 ## Response
 |항목|값(예시)|타입|설명|
