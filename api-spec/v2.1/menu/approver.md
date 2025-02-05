@@ -1,9 +1,9 @@
 # 결재자 - 대기 문서 조회
 결재자가 결재해야할 대기 문서 리스트를 조회합니다.
 ## URL
-* /api/sign/find/approver/doc/dataModify/standby
-* POST
-* application/json;charset=UTF-8
+* /api/sign/approver/doc/dataModify/standby
+* GET
+* application/x-www-form-urlencoded;charset=UTF-8
 ## Request
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
@@ -17,17 +17,7 @@
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 |execStatus|1|int|실행 상태 </br>0: 전체</br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
 ```
-{
-  "startDate": "1736920800",
-  "endDate": "1737526473",
-  "docId": "2025000013",
-  "docTitle": "데이터 변경 요청서 1",
-  "requestName": "홍길동",
-  "aprvLimitStart": 1737526473
-  "aprvLimitEnd": 1737526473,
-  "dataModifyTargetName": "PROD01",
-  "execStatus": "0"
-}
+?startDate=1736920800&endDate=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&aprvLimitStart=1737526473&aprvLimitEnd=1737526473&dataModifyTargetName=PROD01&execStatus=0
 ```
 ## Response
 |항목|값(예시)|타입|설명|
@@ -96,9 +86,9 @@
 # 결재자 - 진행 중 문서 조회
 결재자의 처리 순서가 되지 않았거나 이미 처리한 문서 중, 다른 사람이 처리 중인 문서를 조회합니다.
 ## URL
-* /api/sign/find/approver/doc/dataModify/ongoing
-* POST
-* application/json;charset=UTF-8
+* /api/sign/approver/doc/dataModify/ongoing
+* GET
+* application/x-www-form-urlencoded;charset=UTF-8
 ## Request
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
@@ -112,17 +102,7 @@
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 |execStatus|1|int|실행 상태 </br>0: 전체</br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
 ```
-{
-  "startDate": "1736920800",
-  "endDate": "1737526473",
-  "docId": "2025000013",
-  "docTitle": "데이터 변경 요청서 1",
-  "requestName": "홍길동",
-  "aprvLimitStart": 1737526473
-  "aprvLimitEnd": 1737526473,
-  "dataModifyTargetName": "PROD01",
-  "execStatus": "0"
-}
+?startDate=1736920800&endDate=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&aprvLimitStart=1737526473&aprvLimitEnd=1737526473&dataModifyTargetName=PROD01&execStatus=0
 ```
 ## Response
 |항목|값(예시)|타입|설명|
@@ -191,9 +171,9 @@
 # 결재자 - 완료 문서 조회
 결재자의 처리해야 할 문서 중 결재를 모두 완료한 문서를 조회합니다.
 ## URL
-* /api/sign/find/approver/doc/dataModify/complete
-* POST
-* application/json;charset=UTF-8
+* /api/sign/approver/doc/dataModify/complete
+* GET
+* application/x-www-form-urlencoded;charset=UTF-8
 ## Request
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
@@ -208,18 +188,7 @@
 |approvalState|1|int|결재 상태 </br>0: 전체</br>1: 승인</br>2: 반려|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 ```
-{
-  "startDate": "1736920800",
-  "endDate": "1737526473",
-  "docId": "2025000013",
-  "docTitle": "데이터 변경 요청서 1",
-  "requestName": "홍길동",
-  "endDateStart": 1737526473,
-  "endDateEnd": 1737526473,
-  "rejectApproverName": "결재자1",
-  "approvalState": "0",
-  "dataModifyTargetName": "PROD01"
-}
+?startDate=1736920800&endDate=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&endDateStart=1737526473&endDateEnd=1737526473&rejectApproverName=결재자1&approvalState=0&dataModifyTargetName=PROD01
 ```
 ## Response
 |항목|값(예시)|타입|설명|
