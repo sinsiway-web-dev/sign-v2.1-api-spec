@@ -15,6 +15,7 @@
 |apvLimitStart|1736920800|int|검색 시작일(결재 기한 기준)|
 |apvLimitEnd|1737526473|int|검색 종료일(결재 기한 기준)|
 |approverName|결재자|String|현재 결재자 이름|
+|approverPowerType|1|String|결재자 권한<br>1: 결재<br>2: 실행|
 |rejectApproverName|반려자|String|반려자 이름|
 |execName|실행자|String|실행자 이름|
 |endDateStart|1736920800|int|검색 시작일(결재 완료일 기준)|
