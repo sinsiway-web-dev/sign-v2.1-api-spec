@@ -119,3 +119,36 @@ DB 데이터 변경 요청서 변경 대상을 삭제합니다.
     "message": ""
 }
 ```
+
+# 변경 대상 설정 수정
+DB 데이터 변경 요청서 변경 대상의 설정 값을 수정합니다.
+## URL
+* /api/sign/doc/dataModify/target/conf
+* PUT
+* application/json;charset=UTF-8
+## Request
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|*dataModifyTargetId|121|int|변경 대상 ID|
+|*maxVerifyDataCnt|1000|int|검증 데이터 최대 저장 건수(1 보다 작은 수를 허용 안합니다.)|
+|maxExecCnt|1000|int|최대 실행 건수(1 보다 작을 시 무제한 실행 허용합니다.)|
+```json
+{
+  "dataModifyTargetId": 121,
+  "maxVerifyDataCnt": 1,
+  "maxExecCnt": 1
+}
+```
+## Response
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|code|200|int|결과 코드|
+|data||Map|결과 데이터|
+|message||String|결과 메시지|
+```json
+{
+    "code": 200,
+    "data": {},
+    "message": ""
+}
+```
