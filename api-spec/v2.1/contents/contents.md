@@ -21,12 +21,16 @@
 | message    |            | String | 결과 메시지 |
 | data       |            | Map    | 결과 데이터 |
 | execLog    |            | list | 실행 로그  |
-| date    |2025/02/03 11:12:45| String | 날짜  |
+| date    |2025/02/03 11:12:45.902| String | 날짜  |
 | execType    | 1 | int | 실행 종류<br>1: 변경 전 SQL 실행<br>2: 변경 SQL 실행<br>3: 변경 후 SQL 실행<br>4: 커밋<br>5: 롤백|
 | sqlGroupName    |SQL 그룹 1| String | SQL 그룹 이름(커밋, 롤백 시 빈 값 응답) |
-| log    | INSERT 1\nINSERT 1\nINSERT 1 | String | 실행 로그(커밋, 롤백 시 빈 값 응답) |
+| sqlLog    |  | list | SQL 실행 로그(커밋, 롤백 시 빈 값 응답) |
+| date    |2025/02/11 11:21:12.122| String | 날짜|
+| stmt       |SELECT| String    | SQL 문장 |
+| result       |1| int    | 결과 |
+| msg       | SIGN ERROR : 변경 후 데이터 저장에 실패하였습니다. |String| 실패 메시지(성공 시 빈 값 응답) |
 | execResult    | 1 | int | 실행 결과<br>1: 성공<br>2: 실패|
-| failMsg    | SIGN ERROR : 변경 후 데이터 저장에 실패하였습니다.  | String | 실패 메시지(성공 시 빈 값 응답) |
+| msg    | SIGN ERROR : 변경 후 데이터 저장에 실패하였습니다.  | String | 실패 메시지(성공 시/SQL 실행 로그일 시 빈 값 응답) |
 
 [성공]
 ```json
@@ -36,28 +40,48 @@
   "data": {
     "execLog": [
       {
-        "date": "2025/02/03 11:12:45",
+        "date": "",
         "execType": 1,
         "sqlGroupName": "SQL 그룹 1",
-        "log": "SELECT 52",
+        "sqlLog": [
+          {
+            "date": "2025/02/11 11:21:12.122",
+            "stmt": "SELECT",
+            "result":1,
+            "msg":""
+          }
+        ],
         "execResult": 1,
-        "failMsg": ""
+        "msg": ""
       },
       {
-        "date": "2025/02/03 11:12:45",
+        "date": "",
         "execType": 2,
         "sqlGroupName": "SQL 그룹 1",
-        "log": "INSERT 1\nINSERT 1\nINSERT fail",
+        "sqlLog": [
+          {
+            "date": "2025/02/11 11:21:12.122",
+            "stmt": "INSERT",
+            "result":1,
+            "msg":""
+          },
+          {
+            "date": "2025/02/11 11:21:12.322",
+            "stmt": "UPDATE",
+            "result":-1,
+            "msg":"ORA-00904: \"LOC3\": invalid identifier"
+          }
+        ],
         "execResult": 2,
-        "failMsg": "ORA-00904: \"LOC3\": invalid identifier"
+        "msg": ""
       },
       {
-        "date": "2025/02/03 11:12:45",
+        "date": "2025/02/11 11:21:12.122",
         "execType": 5,
         "sqlGroupName": "",
-        "log": "",
+        "sqlLog": [],
         "execResult": 1,
-        "failMsg": ""
+        "msg": ""
       }
     ]
   }
