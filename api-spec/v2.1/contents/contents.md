@@ -27,7 +27,7 @@
 | sqlLog    |  | list | SQL 실행 로그(커밋, 롤백 시 빈 값 응답) |
 | date    |2025/02/11 11:21:12.122| String | 날짜|
 | stmt       |SELECT| String    | SQL 문장 |
-| result       |1| int    | 결과 |
+| result       |1| int    | 결과<br>0 이상의 수 : 수행(조회) 건수<br>0 미만의 수 : 수행(조회) 실패 |
 | msg       | SIGN ERROR : 변경 후 데이터 저장에 실패하였습니다. |String| 실패 메시지(성공 시 빈 값 응답) |
 | execResult    | 1 | int | 실행 결과<br>1: 성공<br>2: 실패|
 | msg    | SIGN ERROR : 변경 후 데이터 저장에 실패하였습니다.  | String | 실패 메시지(성공 시/SQL 실행 로그일 시 빈 값 응답) |
