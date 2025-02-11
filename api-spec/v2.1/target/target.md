@@ -90,3 +90,32 @@ DB 데이터 변경 요청서 변경 대상(DB)을 모두 조회 합니다.
     "message": ""
 }
 ```
+
+# 변경 대상 삭제
+DB 데이터 변경 요청서 변경 대상을 삭제합니다.
+## URL
+* /api/sign/doc/dataModify/target
+* DELETE
+* application/json;charset=UTF-8
+## Request
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|*dataModifyTargetId|121|int|변경 대상 ID|
+```json
+{
+    "dataModifyTargetId": 121
+}
+```
+## Response
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|code|200|int|결과 코드|
+|data||Map|결과 데이터|
+|message||String|결과 메시지|
+```json
+{
+    "code": 200,
+    "data": {},
+    "message": ""
+}
+```
