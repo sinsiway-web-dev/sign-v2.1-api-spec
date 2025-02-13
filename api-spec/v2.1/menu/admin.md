@@ -29,7 +29,7 @@
 ## Response
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
-|docList| |Array|SQL 실행 이력 리스트|
+|list| |Array|SQL 실행 이력 리스트|
 |docId|2025000013|String|문서 번호|
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
@@ -49,7 +49,7 @@
 {
     "code": 200,
     "data": {
-        "execSqlHist": [
+        "list": [
           {
             "docId":"2025000013",
             "docTitle":"데이터 변경 요청서 1",
@@ -131,7 +131,7 @@
 ## Response
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
-|execSqlHist| |Array|SQL 실행 이력 리스트|
+|list| |Array|SQL 실행 이력 리스트|
 |docId|2025000013|String|문서 번호|
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
@@ -148,7 +148,7 @@
 {
     "code": 200,
     "data": {
-        "execSqlHist": [
+        "list": [
           {
             "docId":"2025000013",
             "docTitle":"데이터 변경 요청서 1",
