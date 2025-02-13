@@ -24,7 +24,7 @@
 ## Response
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
-|docList| |Array|문서 리스트|
+|list| |Array|문서 리스트|
 |docId|2025000013|String|문서 번호|
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
@@ -40,7 +40,7 @@
 {
     "code": 200,
     "data": {
-        "docList": [
+        "list": [
           {
             "docId":"2025000013",
             "docTitle":"데이터 변경 요청서 1",
@@ -74,7 +74,7 @@
 {
     "code": 204,
     "data": {
-        "docList": []
+        "list": []
     },
     "message": "데이터가 없습니다."
 }
@@ -85,7 +85,7 @@
 {
     "code": 500,
     "data": {
-        "docList": []
+        "list": []
     },
     "message": "처리에 실패하였습니다."
 }
@@ -116,7 +116,7 @@
 ## Response
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
-|docList| |Array|문서 리스트|
+|list| |Array|문서 리스트|
 |docId|2025000013|String|문서 번호|
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
@@ -131,7 +131,7 @@
 {
     "code": 200,
     "data": {
-        "docList": [
+        "list": [
           {
             "docId":"2025000013",
             "docTitle":"데이터 변경 요청서 1",
@@ -163,7 +163,7 @@
 {
     "code": 204,
     "data": {
-        "docList": []
+        "list": []
     },
     "message": "데이터가 없습니다."
 }
@@ -174,7 +174,7 @@
 {
     "code": 500,
     "data": {
-        "docList": []
+        "list": []
     },
     "message": "처리에 실패하였습니다."
 }
