@@ -91,7 +91,7 @@
 {
     "code": 204,
     "data": {
-        "execSqlHist": []
+        "list": []
     },
     "message": "데이터가 없습니다."
 }
@@ -102,7 +102,7 @@
 {
     "code": 500,
     "data": {
-        "execSqlHist": []
+        "list": []
     },
     "message": "처리에 실패하였습니다."
 }
@@ -184,7 +184,7 @@
 {
     "code": 204,
     "data": {
-        "execSqlHist": []
+        "list": []
     },
     "message": "데이터가 없습니다."
 }
@@ -195,7 +195,7 @@
 {
     "code": 500,
     "data": {
-        "execSqlHist": []
+        "list": []
     },
     "message": "처리에 실패하였습니다."
 }
