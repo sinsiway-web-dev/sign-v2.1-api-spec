@@ -10,7 +10,8 @@ DB 데이터 변경 요청서 변경 대상을 추가합니다.
 |*dbType|11|int|Petra db type|
 |*dataModifyName|테스트|String|변경 대상명|
 |*dbAccount|hr|String|DB 계정|
-|*dbPassword|hr|String|DB 비밀번호<br>저장 시 암호화|
+|*executeWithPassword|1|int|실행 시 비밀번호 입력 여부<br>0: 변경 대상 등록 시 입력<br>1: 문서 실행 시 입력|
+|dbPassword|hr|String|DB 비밀번호<br>저장 시 암호화<br>실행 시 비밀번호 입력 여부:1 일 시 빈값|
 |dbCharacterSet||String|DB 캐릭터 셋<br>강제 인코딩 용|
 |signCharacterSet||String|SIGN 캐릭터 셋<br>강제 인코딩 용|
 |*jdbcUrl|jdbc:oracle:thin:@1.1.1.1:1521:ora10r2|String|JDBC URL|
@@ -21,7 +22,8 @@ DB 데이터 변경 요청서 변경 대상을 추가합니다.
     "dbType": 11,
     "dataModifyName": "테스트",
     "dbAccount": "hr",
-    "dbPassword": "hr",
+    "executeWithPassword": 1,
+    "dbPassword": "",
     "dbCharacterSet": "",
     "signCharacterSet": "",
     "jdbcUrl": "jdbc:oracle:thin:@192.168.10.110:1522:prod",
@@ -60,6 +62,7 @@ DB 데이터 변경 요청서 변경 대상(DB)을 모두 조회 합니다.
 |dbType|11|int|petra db type|
 |dbTypeText|ORACLE|String|DB 종류명|
 |dataModifyTargetId|34|String|변경대상ID|
+|*executeWithPassword|1|int|실행 시 비밀번호 입력 여부<br>0: 변경 대상 등록 시 입력<br>1: 문서 실행 시 입력|
 |dataModifyTargetName|PROD|String|변경대상명|
 |dbAccount|scott|String|DB 계정명|
 |dbCharacterSet||String|DB 캐릭터 셋<br>강제 인코딩 용|
@@ -79,6 +82,7 @@ DB 데이터 변경 요청서 변경 대상(DB)을 모두 조회 합니다.
                 "dataModifyTargetId": "34",
                 "dataModifyTargetName": "PROD",
                 "dbAccount": "scott",
+                "executeWithPassword": 1,
                 "dbCharacterSet": "",
                 "signCharacterSet": "",
                 "jdbcUrl": "jdbc:oracle:thin:@192.168.10.110:1522:PROD",
