@@ -139,7 +139,7 @@ DB 데이터 변경 요청서 변경 대상을 수정합니다.
 |signCharacterSet|UTF-8|String|SIGN 캐릭터 셋<br>강제 인코딩 용|
 |*jdbcUrl|jdbc:oracle:thin:@1.1.1.1:1521:ora10r2|String|JDBC URL|
 |*maxVerifyDataCnt|1000|int|검증 데이터 최대 저장 건수|
-|*maxExecCnt|1000|int|최대 실행 건수(0 : 무제한)|
+|maxExecCnt|1000|int|최대 실행 건수(0 : 무제한)|
 ```json
 {
   "dataModifyTargetId": 121,
