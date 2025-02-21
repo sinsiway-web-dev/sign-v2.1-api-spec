@@ -67,7 +67,7 @@
 | docId                    | 2021000005                                                  | String  | 결재 문서 번호                                                                                                                                                                                                            |
 | groundsDocId             | 근거-001                                                      | String  | 근거 문서 번호                                                                                                                                                                                                            |
 | createDate               | 2021/04/28 11:30:04                                         | String  | 기안일                                                                                                                                                                                                                 |
-| aprvLimit                | 2021/05/05                                                  | String  | 결재 기한                                                                                                                                                                                                               |
+| apvLimit                | 2021/05/05                                                  | String  | 결재 기한                                                                                                                                                                                                               |
 | requestOrgUid            | u01                                                         | String  | 기안자 ID                                                                                                                                                                                                              |
 | requestName              | 사용자01                                                       | String  | 기안자 이름                                                                                                                                                                                                              |
 | docTitle                 | \[변경\] DB데이터변경                                              | String  | 문서 제목                                                                                                                                                                                                               |
@@ -173,7 +173,7 @@
             "docId": "2024000179",
             "groundsDocId": "",
             "createDate": "2024/11/30 19:52:41",
-            "aprvLimit": "2024/12/01",
+            "apvLimit": "2024/12/01",
             "requestOrgUid": "user100",
             "requestName": "기안자",
             "docTitle": "test",

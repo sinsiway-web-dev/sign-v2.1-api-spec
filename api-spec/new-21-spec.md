@@ -16,7 +16,7 @@
 | *selectBeforeDataCountFlag | false                                           | boolean | 변경 전 데이터 조회 여부<br/>true : 조회<br/>false : 조회 안함 |
 | *docTitle                  | \[변경\] DB데이터변경                                  | String  | 문서 제목                                          |
 | describe                   | DB데이터변경사유                                       | String  | 사유                                             |
-| *aprvLimit                 | 2021/05/05                                      | String  | 결재 기한                                          |
+| *apvLimit                 | 2021/05/05                                      | String  | 결재 기한                                          |
 | *dataModifyTargetId        | 34                                              | int     | 변경 대상 ID                                       |
 | *orgUid                    | u01                                             | String  | 기안자 ID                                         |
 | groundsDocId               | 근거-001                                          | String  | 근거 문서 번호                                       |
@@ -37,7 +37,7 @@
     "selectBeforeDataCountFlag": false,
     "docTitle": "[변경] DB데이터변경",
     "describe": "DB데이터변경사유",
-    "aprvLimit": "2024/11/05",
+    "apvLimit": "2024/11/05",
     "dataModifyTargetId": "2",
     "orgUid": "test",
     "groundsDocId": "",
