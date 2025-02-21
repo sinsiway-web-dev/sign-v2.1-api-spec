@@ -123,24 +123,64 @@ DB 데이터 변경 요청서 변경 대상을 삭제합니다.
     "message": ""
 }
 ```
+<br>
 
-# 변경 대상 설정 수정
-DB 데이터 변경 요청서 변경 대상의 설정 값을 수정합니다.
+# 변경 대상 수정
+DB 데이터 변경 요청서 변경 대상을 수정합니다.
 ## URL
-* /api/sign/doc/dataModify/target/conf
+* /api/sign/doc/dataModify/target
 * PUT
 * application/json;charset=UTF-8
 ## Request
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
-|*dataModifyTargetId|121|int|변경 대상 ID|
-|*maxVerifyDataCnt|1000|int|검증 데이터 최대 저장 건수(1 보다 작은 수를 허용 안합니다.)|
-|maxExecCnt|1000|int|최대 실행 건수(1 보다 작을 시 무제한 실행 허용합니다.)|
+|*dataModifyTargetId|34|String|변경대상ID|
+|dbCharacterSet|UTF-8|String|DB 캐릭터 셋<br>강제 인코딩 용|
+|signCharacterSet|UTF-8|String|SIGN 캐릭터 셋<br>강제 인코딩 용|
+|*jdbcUrl|jdbc:oracle:thin:@1.1.1.1:1521:ora10r2|String|JDBC URL|
+|*maxVerifyDataCnt|1000|int|검증 데이터 최대 저장 건수|
+|*maxExecCnt|1000|int|최대 실행 건수(0 : 무제한)|
 ```json
 {
   "dataModifyTargetId": 121,
-  "maxVerifyDataCnt": 1,
-  "maxExecCnt": 1
+  "dbCharacterSet": "",
+  "signCharacterSet": "",
+  "jdbcUrl": "jdbc:oracle:thin:@1.1.1.1:1521:ora10r2",
+  "maxVerifyDataCnt": 10000,
+  "maxExecCnt": 0
+}
+```
+## Response
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|code|200|int|결과 코드|
+|data||Map|결과 데이터|
+|message||String|결과 메시지|
+```json
+{
+    "code": 200,
+    "data": {},
+    "message": ""
+}
+```
+
+# 변경 대상 비밀번호 설정 수정
+DB 데이터 변경 요청서 변경 대상의 비밀번호 설정을 수정합니다.
+## URL
+* /api/sign/doc/dataModify/target/passwd
+* PUT
+* application/json;charset=UTF-8
+## Request
+|항목|값(예시)|타입|설명|
+|---|---|---|---|
+|*dataModifyTargetId|34|String|변경대상ID|
+|*dbPassword|hr|String|DB 비밀번호<br>저장 시 암호화<br>실행 시 비밀번호 입력 여부:1 일 시 빈값|
+|*executeWithPassword|1|int|실행 시 비밀번호 입력 여부<br>0: 변경 대상 등록 시 입력<br>1: 문서 실행 시 입력|
+```json
+{
+    "dataModifyTargetId": "119",
+    "dbPassword": "hr",
+    "executeWithPassword": 0
 }
 ```
 ## Response
