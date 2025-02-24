@@ -7,24 +7,24 @@
 ## Request
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
-|*startDate|1736920800|int|검색 시작일(기안일 기준)|
-|*endDate|1737526473|int|검색 종료일(기안일 기준)|
+|*startDateFrom|1736920800|int|검색 시작일(기안일 기준)|
+|*startDateTo|1737526473|int|검색 종료일(기안일 기준)|
 |docId|2025000013|String|문서 번호|
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
-|apvLimitStart|1736920800|int|검색 시작일(결재 기한 기준)|
-|apvLimitEnd|1737526473|int|검색 종료일(결재 기한 기준)|
+|apvLimitFrom|1736920800|int|검색 시작일(결재 기한 기준)|
+|apvLimitTo|1737526473|int|검색 종료일(결재 기한 기준)|
 |approverName|결재자|String|현재 결재자 이름|
 |approverPowerType|1|String|결재자 권한<br>1: 결재<br>2: 실행|
 |rejectApproverName|반려자|String|반려자 이름|
 |execName|실행자|String|실행자 이름|
-|endDateStart|1736920800|int|검색 시작일(결재 완료일 기준)|
-|endDateEnd|1737526473|int|검색 종료일(결재 완료일 기준)|
+|endDateFrom|1736920800|int|검색 시작일(결재 완료일 기준)|
+|endDateTo|1737526473|int|검색 종료일(결재 완료일 기준)|
 |approvalState|1|int|결재 상태 </br>0: 전체</br>1: 진행 중</br>2: 승인</br>3: 반려|
 |execResult|1|int|실행 결과 </br>0: 전체</br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 ```text
-?startDate=1736920800&endDate=1737526473&docId=2025000013&docTitle=요청서1&requestName=홍길동&apvLimitStart=1736920800&apvLimitEnd=1737526473&approverName=결재자&rejectApproverName=반려자&execName=실행자&endDateStart=1737526473&endDateEnd=1737526473&approvalState=1&execResult=1&dataModifyTargetName=PROD01
+?startDateFrom=1736920800&startDateTo=1737526473&docId=2025000013&docTitle=요청서1&requestName=홍길동&apvLimitFrom=1736920800&apvLimitTo=1737526473&approverName=결재자&rejectApproverName=반려자&execName=실행자&endDateFrom=1737526473&endDateTo=1737526473&approvalState=1&execResult=1&dataModifyTargetName=PROD01
 ```
 ## Response
 |항목|값(예시)|타입|설명|
@@ -117,8 +117,8 @@
 ## Request
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
-|*startDate|1736920800|int|검색 시작일(실행일)|
-|*endDate|1737526473|int|검색 종료일(실행일)|
+|*execDateFrom|1736920800|int|검색 시작일(실행일)|
+|*execDateTo|1737526473|int|검색 종료일(실행일)|
 |docId|2025000013|String|문서 번호|
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
@@ -126,7 +126,7 @@
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 |execResult|1|int|실행 결과 </br>1: 성공</br>2: 실패|
 ```text
-?startDate=1736920800&endDate=1737526473&docId=2025000013&docTitle=요청서1&requestName=홍길동&execName=김관리&dataModifyTargetName=PROD01&execResult=1
+?execDateFrom=1736920800&execDateTo=1737526473&docId=2025000013&docTitle=요청서1&requestName=홍길동&execName=김관리&dataModifyTargetName=PROD01&execResult=1
 ```
 ## Response
 |항목|값(예시)|타입|설명|

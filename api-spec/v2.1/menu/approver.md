@@ -7,17 +7,17 @@
 ## Request
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
-|*startDate|1736920800|int|검색 시작일(기안일 기준)|
-|*endDate|1737526473|int|검색 종료일(기안일 기준)|
+|*startDateFrom|1736920800|int|검색 시작일(기안일 기준)|
+|*startDateTo|1737526473|int|검색 종료일(기안일 기준)|
 |docId|2025000013|String|문서 번호|
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
-|apvLimitStart|1736920800|int|검색 시작일(결재 기한)|
-|apvLimitEnd|1737526473|int|검색 종료일(결재 기한)|
+|apvLimitFrom|1736920800|int|검색 시작일(결재 기한)|
+|apvLimitTo|1737526473|int|검색 종료일(결재 기한)|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 |execStatus|1|int|실행 상태 </br>0: 전체</br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
 ```
-?startDate=1736920800&endDate=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&apvLimitStart=1737526473&apvLimitEnd=1737526473&dataModifyTargetName=PROD01&execStatus=0
+?startDateFrom=1736920800&startDateTo=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&apvLimitFrom=1737526473&apvLimitTo=1737526473&dataModifyTargetName=PROD01&execStatus=0
 ```
 ## Response
 |항목|값(예시)|타입|설명|
@@ -92,17 +92,17 @@
 ## Request
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
-|*startDate|1736920800|int|검색 시작일(기안일 기준)|
-|*endDate|1737526473|int|검색 종료일(기안일 기준)|
+|*startDateFrom|1736920800|int|검색 시작일(기안일 기준)|
+|*startDateTo|1737526473|int|검색 종료일(기안일 기준)|
 |docId|2025000013|String|문서 번호|
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
-|apvLimitStart|1736920800|int|검색 시작일(결재 기한)|
-|apvLimitEnd|1737526473|int|검색 종료일(결재 기한)|
+|apvLimitFrom|1736920800|int|검색 시작일(결재 기한)|
+|apvLimitTo|1737526473|int|검색 종료일(결재 기한)|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 |execStatus|1|int|실행 상태 </br>0: 전체</br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
 ```
-?startDate=1736920800&endDate=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&apvLimitStart=1737526473&apvLimitEnd=1737526473&dataModifyTargetName=PROD01&execStatus=0
+?startDateFrom=1736920800&startDateTo=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&apvLimitFrom=1737526473&apvLimitTo=1737526473&dataModifyTargetName=PROD01&execStatus=0
 ```
 ## Response
 |항목|값(예시)|타입|설명|
@@ -177,18 +177,18 @@
 ## Request
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
-|*startDate|1736920800|int|검색 시작일(기안일 기준)|
-|*endDate|1737526473|int|검색 종료일(기안일 기준)|
+|*startDateFrom|1736920800|int|검색 시작일(기안일 기준)|
+|*startDateTo|1737526473|int|검색 종료일(기안일 기준)|
 |docId|2025000013|String|문서 번호|
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
-|endDateStart|1736920800|int|검색 시작일(결재 완료일 기준)|
-|endDateEnd|1737526473|int|검색 종료일(결재 완료일 기준)|
+|endDateFrom|1736920800|int|검색 시작일(결재 완료일 기준)|
+|endDateTo|1737526473|int|검색 종료일(결재 완료일 기준)|
 |rejectApproverName|결재자1|String|반려자 이름|
 |approvalState|1|int|결재 상태 </br>0: 전체</br>1: 승인</br>2: 반려|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 ```
-?startDate=1736920800&endDate=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&endDateStart=1737526473&endDateEnd=1737526473&rejectApproverName=결재자1&approvalState=0&dataModifyTargetName=PROD01
+?startDateFrom=1736920800&startDateTo=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&endDateFrom=1737526473&endDateTo=1737526473&rejectApproverName=결재자1&approvalState=0&dataModifyTargetName=PROD01
 ```
 ## Response
 |항목|값(예시)|타입|설명|
