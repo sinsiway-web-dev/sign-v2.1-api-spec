@@ -13,7 +13,7 @@
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
 |approverName|김관리|String|현재 결재자 이름|
-|approverPowerType|1|int|결재자 권한<br>1: 결재<br>2: 실행|
+|approverPowerType|1, 2|List<int>|결재자 권한<br>null: 전체<br>1: 결재<br>2: 실행|
 |apvLimitFrom|1736920800|int|검색 시작일(결재 기한)|
 |apvLimitTo|1737526473|int|검색 종료일(결재 기한)|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
@@ -109,7 +109,7 @@
 |endDateTo|1737526473|int|검색 종료일(결재 완료일 기준)|
 |rejectApproverName|김관리|String|반려자 이름|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
-|approvalState|1|int|결재 상태</br>0: 전체</br>1: 승인</br>2: 반려|
+|approvalState|1, 2|List<int>|결재 상태 </br>null: 전체</br>2: 승인</br>3: 반려|
 ```
 ?startDateFrom=1736920800&startDateTo=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&endDateFrom=1736920800&endDateTo=1737526473&rejectApproverName=김관리&dataModifyTargetName=PROD01&approvalState=0
 ```
@@ -123,7 +123,7 @@
 |startDate|2025/04/28 11:30:04|String|기안일|
 |endDate|2025/04/28 13:30:04|String|결재 완료일|
 |rejectApproverName|김관리|String|반려자 이름|
-|approvalState|1|int|결재 상태</br>1: 승인</br>2: 반려|
+|approvalState|2|int|결재 상태</br>2: 승인</br>3: 반려|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 
 [성공]
@@ -139,7 +139,7 @@
             "startDate":"2025/04/28 11:30:04",
             "endDate":"2025/04/29 11:30:04",
             "rejectApproverName":"김관리",
-            "approvalState":1,
+            "approvalState":2,
             "dataModifyTargetName":"PROD01"
           },
           {
@@ -149,7 +149,7 @@
             "startDate":"2025/04/29 11:30:04",
             "endDate":"2025/04/30 11:30:04",
             "rejectApproverName":"김관리",
-            "approvalState":2,
+            "approvalState":3,
             "dataModifyTargetName":"PROD02"
           }
         ]
