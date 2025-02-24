@@ -29,7 +29,7 @@
 |startDate|2025/04/28 11:30:04|String|기안일|
 |apvLimit|2025/04/28 13:30:04|String|결재 기한|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
-|execStatus|1|int|실행 상태 </br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
+|execState|1|int|실행 상태 </br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
 
 [성공]
 ```json
@@ -44,7 +44,7 @@
             "startDate":"2025/04/28 11:30:04",
             "apvLimit":"2025/05/06 13:30:04",
             "dataModifyTargetName":"PROD01",
-            "execStatus":1
+            "execState":1
           },
           {
             "docId":"2025000013",
@@ -53,7 +53,7 @@
             "startDate":"2025/04/29 11:30:04",
             "apvLimit":"2025/05/06 13:30:04",
             "dataModifyTargetName":"PROD01",
-            "execStatus":2
+            "execState":2
           }
         ]
     },
@@ -102,7 +102,7 @@
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 |execState|1, 3|List<int>|실행 상태 </br>null: 전체</br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
 ```
-?startDateFrom=1736920800&startDateTo=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&apvLimitFrom=1737526473&apvLimitTo=1737526473&dataModifyTargetName=PROD01&execStatus=0
+?startDateFrom=1736920800&startDateTo=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&apvLimitFrom=1737526473&apvLimitTo=1737526473&dataModifyTargetName=PROD01&execState=0
 ```
 ## Response
 |항목|값(예시)|타입|설명|
@@ -114,7 +114,7 @@
 |startDate|2025/04/28 11:30:04|String|기안일|
 |apvLimit|2025/04/28 13:30:04|String|결재 기한|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
-|execStatus|1|int|실행 상태 </br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
+|execState|1|int|실행 상태 </br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
 
 [성공]
 ```json
@@ -129,7 +129,7 @@
             "startDate":"2025/04/28 11:30:04",
             "apvLimit":"2025/05/06 13:30:04",
             "dataModifyTargetName":"PROD01",
-            "execStatus":1
+            "execState":1
           },
           {
             "docId":"2025000013",
@@ -138,7 +138,7 @@
             "startDate":"2025/04/29 11:30:04",
             "apvLimit":"2025/05/06 13:30:04",
             "dataModifyTargetName":"PROD01",
-            "execStatus":2
+            "execState":2
           }
         ]
     },
