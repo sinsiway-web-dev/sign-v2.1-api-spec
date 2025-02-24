@@ -41,7 +41,7 @@
 |execName|실행자|String|실행자 이름|
 |endDate|2025/04/28 13:30:04|String|결재 완료일|
 |approvalState|1|int|결재 상태 </br>1: 진행 중</br>2: 승인</br>3: 반려|
-|execResult|1|int|실행 결과 </br>1: 실행 전2: 실행 중</br>3: 실행 완료|
+|execState|1|int|실행 상태 </br>1: 실행 전2: 실행 중</br>3: 실행 완료|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 
 [성공]
@@ -62,7 +62,7 @@
             "execName":"실행자",
             "endDate":"2025/04/28 13:30:04",
             "approvalState":1,
-            "execResult":1,
+            "execState":1,
             "dataModifyTargetName":"PROD01"
           },
           {
@@ -77,7 +77,7 @@
             "execName":"실행자",
             "endDate":"2025/04/28 13:30:04",
             "approvalState":1,
-            "execResult":1,
+            "execState":1,
             "dataModifyTargetName":"PROD01"
           }
         ]
