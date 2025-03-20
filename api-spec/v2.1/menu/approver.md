@@ -7,6 +7,7 @@
 ## Request
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
+|*orgUid|u01|String|사용자 ID|
 |*startDateFrom|1736920800|int|검색 시작일(기안일 기준)|
 |*startDateTo|1737526473|int|검색 종료일(기안일 기준)|
 |docId|2025000013|String|문서 번호|
@@ -17,7 +18,7 @@
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 |execState|1, 3|List<int>|실행 상태 </br>null: 전체</br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
 ```
-?startDateFrom=1736920800&startDateTo=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&apvLimitFrom=1737526473&apvLimitTo=1737526473&dataModifyTargetName=PROD01&execStatus=0
+?orgUid=su1&startDateFrom=1736920800&startDateTo=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&apvLimitFrom=1737526473&apvLimitTo=1737526473&dataModifyTargetName=PROD01&execStatus=0
 ```
 ## Response
 |항목|값(예시)|타입|설명|
@@ -92,6 +93,7 @@
 ## Request
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
+|*orgUid|u01|String|사용자 ID|
 |*startDateFrom|1736920800|int|검색 시작일(기안일 기준)|
 |*startDateTo|1737526473|int|검색 종료일(기안일 기준)|
 |docId|2025000013|String|문서 번호|
@@ -177,6 +179,7 @@
 ## Request
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
+|*orgUid|u01|String|사용자 ID|
 |*startDateFrom|1736920800|int|검색 시작일(기안일 기준)|
 |*startDateTo|1737526473|int|검색 종료일(기안일 기준)|
 |docId|2025000013|String|문서 번호|

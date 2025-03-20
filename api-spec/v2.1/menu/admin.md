@@ -36,7 +36,7 @@
 |startDate|2025/04/28 11:30:04|String|기안일|
 |apvLimit|2025/05/05 11:30:04|String|결재 기한|
 |approverName|결재자1|String|현재 결재자 이름|
-|approverPowerType|1|String|결재자 권한<br>1: 결재<br>2: 실행<br>-1: 현재 결재자 없음|
+|approverPowerType|1|String|결재자 권한<br>1: 결재<br>2: 실행|
 |rejectApproverName|반려자|String|반려자 이름|
 |execName|실행자|String|실행자 이름|
 |endDate|2025/04/28 13:30:04|String|결재 완료일|
