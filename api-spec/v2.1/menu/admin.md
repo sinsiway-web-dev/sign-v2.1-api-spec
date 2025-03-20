@@ -20,7 +20,7 @@
 |execName|실행자|String|실행자 이름|
 |endDateFrom|1736920800|int|검색 시작일(결재 완료일 기준)|
 |endDateTo|1737526473|int|검색 종료일(결재 완료일 기준)|
-|approvalState|1, 2|List<int>|결재 상태 </br>null: 전체</br>1: 진행 중</br>2: 승인</br>3: 반려|
+|approvalState|1, 2|List<int>|결재 상태 </br>null: 전체</br>1: 진행 중</br>2: 승인</br>3: 반려</br>5: 유효기간 경과</br>6: 회수|
 |execState|1, 3|List<int>|실행 상태 </br>null: 전체</br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 ```text
@@ -36,11 +36,11 @@
 |startDate|2025/04/28 11:30:04|String|기안일|
 |apvLimit|2025/05/05 11:30:04|String|결재 기한|
 |approverName|결재자1|String|현재 결재자 이름|
-|approverPowerType|1|String|결재자 권한<br>1: 결재<br>2: 실행|
+|approverPowerType|1|String|결재자 권한<br>1: 결재<br>2: 실행<br>-1: 현재 결재자 없음|
 |rejectApproverName|반려자|String|반려자 이름|
 |execName|실행자|String|실행자 이름|
 |endDate|2025/04/28 13:30:04|String|결재 완료일|
-|approvalState|1|int|결재 상태 </br>1: 진행 중</br>2: 승인</br>3: 반려|
+|approvalState|1|int|결재 상태 </br>1: 진행 중</br>2: 승인</br>3: 반려</br>5: 유효기간 경과</br>6: 회수|
 |execState|1|int|실행 상태 </br>1: 실행 전2: 실행 중</br>3: 실행 완료|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 
@@ -83,17 +83,6 @@
         ]
     },
     "message": "처리되었습니다."
-}
-```
-
-[데이터 없음]
-```json
-{
-    "code": 204,
-    "data": {
-        "list": []
-    },
-    "message": "데이터가 없습니다."
 }
 ```
 
