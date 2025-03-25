@@ -8,8 +8,8 @@
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
 |*orgUid|u01|String|사용자 ID|
-|*startDateFrom|1736920800|int|검색 시작일(기안일 기준)|
-|*startDateTo|1737526473|int|검색 종료일(기안일 기준)|
+|*createDateFrom|1736920800|int|검색 시작일(기안일 기준)|
+|*createDateTo|1737526473|int|검색 종료일(기안일 기준)|
 |docId|2025000013|String|문서 번호|
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
@@ -18,7 +18,7 @@
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 |execState|1, 3|List<int>|실행 상태 </br>null: 전체</br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
 ```
-?orgUid=su1&startDateFrom=1736920800&startDateTo=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&apvLimitFrom=1737526473&apvLimitTo=1737526473&dataModifyTargetName=PROD01&execStatus=0
+?orgUid=su1&createDateFrom=1736920800&createDateTo=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&apvLimitFrom=1737526473&apvLimitTo=1737526473&dataModifyTargetName=PROD01&execStatus=0
 ```
 ## Response
 |항목|값(예시)|타입|설명|
@@ -27,7 +27,7 @@
 |docId|2025000013|String|문서 번호|
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
-|startDate|2025/04/28 11:30:04|String|기안일|
+|createDate|2025/04/28 11:30:04|String|기안일|
 |apvLimit|2025/04/28 13:30:04|String|결재 기한|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 |execState|1|int|실행 상태 </br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
@@ -42,7 +42,7 @@
             "docId":"2025000013",
             "docTitle":"데이터 변경 요청서 1",
             "requestName":"홍길동",
-            "startDate":"2025/04/28 11:30:04",
+            "createDate":"2025/04/28 11:30:04",
             "apvLimit":"2025/05/06 13:30:04",
             "dataModifyTargetName":"PROD01",
             "execState":1
@@ -51,7 +51,7 @@
             "docId":"2025000013",
             "docTitle":"데이터 변경 요청서 2",
             "requestName":"홍길동",
-            "startDate":"2025/04/29 11:30:04",
+            "createDate":"2025/04/29 11:30:04",
             "apvLimit":"2025/05/06 13:30:04",
             "dataModifyTargetName":"PROD01",
             "execState":2
@@ -94,8 +94,8 @@
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
 |*orgUid|u01|String|사용자 ID|
-|*startDateFrom|1736920800|int|검색 시작일(기안일 기준)|
-|*startDateTo|1737526473|int|검색 종료일(기안일 기준)|
+|*createDateFrom|1736920800|int|검색 시작일(기안일 기준)|
+|*createDateTo|1737526473|int|검색 종료일(기안일 기준)|
 |docId|2025000013|String|문서 번호|
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
@@ -104,7 +104,7 @@
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 |execState|1, 3|List<int>|실행 상태 </br>null: 전체</br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
 ```
-?startDateFrom=1736920800&startDateTo=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&apvLimitFrom=1737526473&apvLimitTo=1737526473&dataModifyTargetName=PROD01&execState=0
+?createDateFrom=1736920800&createDateTo=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&apvLimitFrom=1737526473&apvLimitTo=1737526473&dataModifyTargetName=PROD01&execState=0
 ```
 ## Response
 |항목|값(예시)|타입|설명|
@@ -113,7 +113,7 @@
 |docId|2025000013|String|문서 번호|
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
-|startDate|2025/04/28 11:30:04|String|기안일|
+|createDate|2025/04/28 11:30:04|String|기안일|
 |apvLimit|2025/04/28 13:30:04|String|결재 기한|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 |execState|1|int|실행 상태 </br>1: 실행 전</br>2: 실행 중</br>3: 실행 완료|
@@ -128,7 +128,7 @@
             "docId":"2025000013",
             "docTitle":"데이터 변경 요청서 1",
             "requestName":"홍길동",
-            "startDate":"2025/04/28 11:30:04",
+            "createDate":"2025/04/28 11:30:04",
             "apvLimit":"2025/05/06 13:30:04",
             "dataModifyTargetName":"PROD01",
             "execState":1
@@ -137,7 +137,7 @@
             "docId":"2025000013",
             "docTitle":"데이터 변경 요청서 2",
             "requestName":"홍길동",
-            "startDate":"2025/04/29 11:30:04",
+            "createDate":"2025/04/29 11:30:04",
             "apvLimit":"2025/05/06 13:30:04",
             "dataModifyTargetName":"PROD01",
             "execState":2
@@ -180,8 +180,8 @@
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
 |*orgUid|u01|String|사용자 ID|
-|*startDateFrom|1736920800|int|검색 시작일(기안일 기준)|
-|*startDateTo|1737526473|int|검색 종료일(기안일 기준)|
+|*createDateFrom|1736920800|int|검색 시작일(기안일 기준)|
+|*createDateTo|1737526473|int|검색 종료일(기안일 기준)|
 |docId|2025000013|String|문서 번호|
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
@@ -191,7 +191,7 @@
 |approvalState|2|List<int>|결재 상태 </br>null: 전체</br>2: 승인</br>3: 반려|
 |dataModifyTargetName|PROD01|String|변경 대상 이름|
 ```
-?startDateFrom=1736920800&startDateTo=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&endDateFrom=1737526473&endDateTo=1737526473&rejectApproverName=결재자1&approvalState=0&dataModifyTargetName=PROD01
+?createDateFrom=1736920800&createDateTo=1737526473&docId=2025000013&docTitle=데이터 변경 요청서 1&requestName=홍길동&endDateFrom=1737526473&endDateTo=1737526473&rejectApproverName=결재자1&approvalState=0&dataModifyTargetName=PROD01
 ```
 ## Response
 |항목|값(예시)|타입|설명|
@@ -200,7 +200,7 @@
 |docId|2025000013|String|문서 번호|
 |docTitle|데이터 변경 요청서 1 |String|문서 제목|
 |requestName|홍길동|String|기안자 이름|
-|startDate|2025/04/28 11:30:04|String|기안일|
+|createDate|2025/04/28 11:30:04|String|기안일|
 |endDate|2025/04/28 13:30:04|String|결재 완료일|
 |rejectApproverName|결재자1|String|반려자 이름|
 |approvalState|2|int|결재 상태 </br>2: 승인</br>3: 반려|
@@ -216,7 +216,7 @@
             "docId":"2025000013",
             "docTitle":"데이터 변경 요청서 1",
             "requestName":"홍길동",
-            "startDate":"2025/04/28 11:30:04",
+            "createDate":"2025/04/28 11:30:04",
             "endDate":"2025/05/06 13:30:04",
             "rejectApproverName":"결재자1",
             "approvalState":2,
@@ -226,7 +226,7 @@
             "docId":"2025000014",
             "docTitle":"데이터 변경 요청서 2",
             "requestName":"기안자1",
-            "startDate":"2025/04/28 11:30:04",
+            "createDate":"2025/04/28 11:30:04",
             "endDate":"2025/05/06 13:30:04",
             "rejectApproverName":"결재자2",
             "approvalState":3,
