@@ -10,25 +10,25 @@ DB 데이터 변경 요청서 변경 대상을 추가합니다.
 |*dbType|11|int|Petra db type|
 |*dataModifyName|테스트|String|변경 대상명|
 |*dbAccount|hr|String|DB 계정|
-|*executeWithPassword|1|int|실행 시 비밀번호 입력 여부<br>0: 변경 대상 등록 시 입력<br>1: 문서 실행 시 입력|
 |dbPassword|hr|String|DB 비밀번호<br>저장 시 암호화<br>실행 시 비밀번호 입력 여부:1 일 시 빈값|
-|dbCharacterSet||String|DB 캐릭터 셋<br>강제 인코딩 용|
-|signCharacterSet||String|SIGN 캐릭터 셋<br>강제 인코딩 용|
+|*passwordFlag|1|int|비밀번호 입력 여부<br>1: 변경 대상 등록 시 입력<br>0: 문서 실행 시 입력|
 |*jdbcUrl|jdbc:oracle:thin:@1.1.1.1:1521:ora10r2|String|JDBC URL|
 |*maxVerifyDataCnt|1000|int|검증 데이터 최대 저장 건수|
 |maxExecCnt|1000|int|최대 실행 건수(기본값 : 무제한)|
+|dbCharacterSet||String|DB 캐릭터 셋<br>강제 인코딩 용|
+|signCharacterSet||String|SIGN 캐릭터 셋<br>강제 인코딩 용|
 ```json
 {
     "dbType": 11,
     "dataModifyName": "테스트",
     "dbAccount": "hr",
-    "executeWithPassword": 1,
-    "dbPassword": "",
-    "dbCharacterSet": "",
-    "signCharacterSet": "",
+    "dbPassword": "hr",
+    "passwordFlag": 1,
     "jdbcUrl": "jdbc:oracle:thin:@192.168.10.110:1522:prod",
-    "maxVerifyDataCnt": 1000,
-    "maxExecCnt": 1000
+    "maxVerifyDataCnt": 10,
+    "maxExecCnt": 10,
+    "dbCharacterSet": "UTF-8",
+    "signCharacterSet": "UTF-8"
 }
 ```
 ## Response
@@ -40,8 +40,8 @@ DB 데이터 변경 요청서 변경 대상을 추가합니다.
 ```json
 {
     "code": 200,
-    "data": {},
-    "message": ""
+    "message": "처리되었습니다.",
+    "data": {}
 }
 ```
 
