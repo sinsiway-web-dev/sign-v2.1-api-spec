@@ -37,6 +37,10 @@ DB 데이터 변경 요청서 변경 대상을 추가합니다.
 |code|200|int|결과 코드|
 |data||Map|결과 데이터|
 |message||String|결과 메시지|
+### 결과 코드
+- 200 : 성공
+- 201 : 변경 대상 이름 중복
+- 그 외 : 실패
 ```json
 {
     "code": 200,
@@ -65,9 +69,9 @@ DB 데이터 변경 요청서 변경 대상(DB)을 모두 조회 합니다.
 |dataModifyTargetName|PROD|String|변경대상명|
 |dbAccount|scott|String|DB 계정명|
 |dbPassword|암호화된비밀번호|String|DB 계정 비밀번호|
-|executeWithPassword|1|int|실행 시 비밀번호 입력 여부<br>0: 변경 대상 등록 시 입력<br>1: 문서 실행 시 입력|
+|passwordFlag|1|int|실행 시 비밀번호 입력 여부<br>1: 변경 대상 등록 시 입력<br>0: 문서 실행 시 입력|
 |dbCharacterSet||String|DB 캐릭터 셋<br>강제 인코딩 용|
-|changeCharacterSet||String|변경 캐릭터 셋<br>강제 인코딩 용|
+|signCharacterSet||String|변경 캐릭터 셋<br>강제 인코딩 용|
 |jdbcUrl|jdbc:oracle:thin:@192.168.10.110:1522:PROD|String|JDBC URL|
 |maxVerifyDataCnt|1000|int|검증 데이터 최대 저장 건수|
 |maxExecCnt|1000|int|최대 실행 건수<br>1보다 작은 수: 무제한<br>1이상의 수: 해당 값으로 설정 됨|
@@ -75,25 +79,39 @@ DB 데이터 변경 요청서 변경 대상(DB)을 모두 조회 합니다.
 ```json
 {
     "code": 200,
+    "message": "처리되었습니다.",
     "data": {
         "dataModifyTargetList": [
             {
                 "dbType": 11,
                 "dbTypeText": "ORACLE",
-                "dataModifyTargetId": "34",
-                "dataModifyTargetName": "PROD",
-                "dbAccount": "scott",
-                "dbAccount": "c2NvdHQ...",
-                "executeWithPassword": 1,
+                "dataModifyTargetId": "4",
+                "dataModifyTargetName": "테스트",
+                "dbAccount": "hr",
+                "dbPassword": "Kv2l0tDT7oiU/g0L+QGghkllm1wowKcGQl9IAe9a7piebwLakIG6bpqP46o0tbXJ",
                 "dbCharacterSet": "",
                 "signCharacterSet": "",
-                "jdbcUrl": "jdbc:oracle:thin:@192.168.10.110:1522:PROD",
-                "maxVerifyDataCnt": 10000,
-                "maxExecCnt": 10000
+                "jdbcUrl": "jdbc:oracle:thin:@192.168.10.110:1522:prod",
+                "maxVerifyDataCnt": 10,
+                "maxExecCnt": 10,
+                "passwordFlag": 1,
+            },
+            {
+                "dbType": 11,
+                "dbTypeText": "ORACLE",
+                "dataModifyTargetId": "13",
+                "dataModifyTargetName": "테스트2",
+                "dbAccount": "test",
+                "dbPassword": "",
+                "dbCharacterSet": "UTF-8",
+                "signCharacterSet": "UTF-8",
+                "jdbcUrl": "jdbc:oracle:thin:@192.168.10.110:1522:prod",
+                "maxVerifyDataCnt": 10,
+                "maxExecCnt": 0,
+                "passwordFlag": 0
             }
         ]
-    },
-    "message": ""
+    }
 }
 ```
 
