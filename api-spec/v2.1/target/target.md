@@ -10,7 +10,7 @@ DB 데이터 변경 요청서 변경 대상을 추가합니다.
 |*dbType|11|int|Petra db type|
 |*dataModifyName|테스트|String|변경 대상명|
 |*dbAccount|hr|String|DB 계정|
-|dbPassword|hr|String|DB 비밀번호<br>저장 시 암호화<br>실행 시 비밀번호 입력 여부:1 일 시 빈값|
+|dbPassword|hr|String|DB 비밀번호<br>저장 시 암호화<br>`passwordFlag=1` 일 시 필수 입력<br>`passwordFlag=0` 일 시 빈값|
 |*passwordFlag|1|int|비밀번호 입력 여부<br>1: 변경 대상 등록 시 입력<br>0: 문서 실행 시 입력|
 |*jdbcUrl|jdbc:oracle:thin:@1.1.1.1:1521:ora10r2|String|JDBC URL|
 |*maxVerifyDataCnt|1000|int|검증 데이터 최대 저장 건수|
@@ -41,6 +41,7 @@ DB 데이터 변경 요청서 변경 대상을 추가합니다.
 - 200 : 성공
 - 201 : 변경 대상 이름 중복
 - 그 외 : 실패
+### 응답 예시
 ```json
 {
     "code": 200,
@@ -155,23 +156,23 @@ DB 데이터 변경 요청서 변경 대상을 수정합니다.
 |항목|값(예시)|타입|설명|
 |---|---|---|---|
 |*dataModifyTargetId|34|String|변경대상ID|
-|dbPassword|tiger|String|DB 비밀번호<br>저장 시 암호화<br>실행 시 비밀번호 입력 여부:1 일 시 빈값|
-|*executeWithPassword|1|int|실행 시 비밀번호 입력 여부<br>0: 변경 대상 등록 시 입력<br>1: 문서 실행 시 입력|
-|dbCharacterSet|UTF-8|String|DB 캐릭터 셋<br>강제 인코딩 용|
-|signCharacterSet|UTF-8|String|SIGN 캐릭터 셋<br>강제 인코딩 용|
+|dbPassword|tiger|String|DB 비밀번호<br>`passwordFlag=1` 일 시 필수 입력<br>`passwordFlag=0` 일 시 빈값|
+|*passwordFlag|1|int|실행 시 비밀번호 입력 여부<br>1: 변경 대상 등록 시 입력<br>0: 문서 실행 시 입력|
 |*jdbcUrl|jdbc:oracle:thin:@1.1.1.1:1521:ora10r2|String|JDBC URL|
 |*maxVerifyDataCnt|1000|int|검증 데이터 최대 저장 건수|
 |maxExecCnt|1000|int|최대 실행 건수(0 : 무제한)|
+|dbCharacterSet|UTF-8|String|DB 캐릭터 셋<br>강제 인코딩 용|
+|signCharacterSet|UTF-8|String|SIGN 캐릭터 셋<br>강제 인코딩 용|
 ```json
 {
     "dataModifyTargetId": 121,
     "dbPassword": "tiger",
-    "executeWithPassword": 0,
-    "dbCharacterSet": "",
-    "signCharacterSet": "",
+    "passwordFlag": 0,
     "jdbcUrl": "jdbc:oracle:thin:@1.1.1.1:1521:ora10r2",
     "maxVerifyDataCnt": 10000,
-    "maxExecCnt": 0
+    "maxExecCnt": 0,
+    "dbCharacterSet": "",
+    "signCharacterSet": ""
 }
 ```
 ## Response
