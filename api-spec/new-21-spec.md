@@ -17,7 +17,7 @@
 | *docTitle                  | \[변경\] DB데이터변경                                  | String  | 문서 제목                                          |
 | describe                   | DB데이터변경사유                                       | String  | 사유                                             |
 | *apvLimit                 | 2021/05/05                                      | String  | 결재 기한                                          |
-| *dataModifyTargetId        | 34                                              | int     | 변경 대상 ID                                       |
+| *dataModifyTargetAccountId        | 34                                              | int     | 변경 대상 계정 ID                                       |
 | *orgUid                    | u01                                             | String  | 기안자 ID                                         |
 | groundsDocId               | 근거-001                                          | String  | 근거 문서 번호                                       |
 | *apvLineApprover           |                                                 | Array   | 결재자 목록                                         |
@@ -38,7 +38,7 @@
     "docTitle": "[변경] DB데이터변경",
     "describe": "DB데이터변경사유",
     "apvLimit": "2024/11/05",
-    "dataModifyTargetId": "2",
+    "dataModifyTargetAccountId": "2",
     "orgUid": "test",
     "groundsDocId": "",
     "apvLineApprover": [
